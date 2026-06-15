@@ -22,11 +22,9 @@ entity User : cuid, managed {
 entity Addresses : cuid {
     addressLine1  : String(150) not null;
     addressLine2  : String(150);
-    addressLine3  : String(150);
     city          : String(100) not null;
     stateProvince : String(100);
     postalCode    : String(20);
-    countryCode   : String(2) not null;
 }
 
 entity Restaurant : cuid, managed {
