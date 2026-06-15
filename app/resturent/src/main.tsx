@@ -6,5 +6,5 @@ import Home from './pages/home/home'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Home />
-  </StrictMode>,
+  </StrictMode>
 )
