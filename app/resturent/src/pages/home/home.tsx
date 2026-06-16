@@ -1,6 +1,4 @@
-// import { useEffect } from "react";
-
-import "@ui5/webcomponents-fiori/dist/Page.js"
+import { useState } from "react";
 
 import {
   Page, Bar, Title, Form,
@@ -9,8 +7,22 @@ import {
   Input,
   Select,
   Option,
-  FlexBox
+  Card
 } from "@ui5/webcomponents-react";
+
+type BasicDetails = {
+  name: string,
+  email: string,
+  number: string
+};
+
+type AddressDetails = {
+  addressLine1: string,
+  addressLine2: string,
+  city: string,
+  stateProvince: string,
+  postalCode: BigInteger,
+};
 
 
 export default function Home() {
@@ -39,97 +51,90 @@ export default function Home() {
 
 
 function Register() {
+
+  const [showAddress, setShowAddress] = useState<boolean>(true);
+
+
+  const [basicDetails, setBasicDetails] = useState<BasicDetails>({ name: "", email: "", number: "" });
+  const [addressDetails, setaddressDetails] = useState<AddressDetails>({
+    addressLine1: "",
+    addressLine2: "",
+    city: "",
+    stateProvince: "",
+    postalCode: null,
+  });
+
   return (
-    <div style={{}}>
-      <Form
-        style={{}}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        padding: "2rem"
+      }}
+    >
+      <Card
+        style={{
+          width: "700px",
+          padding: "1rem",
+          margin: "1rem"
+        }}
       >
-        <FormGroup >
+        <Form>
+          <FormGroup headerText="Employee Details">
+            <FormItem labelContent={<span>Name</span>}>
+              <Input placeholder="Enter Name" value={basicDetails.name} onInput={(e) => {
+                setBasicDetails(prev => ({ ...prev, name: e.target.value }))
+              }} />
+            </FormItem>
 
-          <FormItem labelContent={<span>Name</span>}>
-            <Input placeholder="Enter Name" />
-          </FormItem>
+            <FormItem labelContent={<span>Email</span>}>
+              <Input placeholder="Enter Email" value={basicDetails.email} onInput={(e) => {
+                setBasicDetails(prev => ({ ...prev, email: e.target.value }))
+              }} />
+            </FormItem>
 
-          <FormItem labelContent={<span>Email</span>}>
-            <Input
-              type="Email"
-              placeholder="Enter Email"
-            />
-          </FormItem>
+            <FormItem labelContent={<span>Department</span>}>
+              <Select
+                onChange={(e) => (e.detail.selectedOption.innerText === 'DELIVERY BOY') ? setShowAddress(false) : setShowAddress(true)}>
+                <Option>CUSTOMER</Option>
+                <Option>RESTAURANT OWNER</Option>
+                <Option>DELIVERY BOY</Option>
+              </Select>
+            </FormItem>
 
-        </FormGroup>
-        <FormGroup >
+            <FormItem labelContent={<span>Mobile Number</span>}>
+              <Input placeholder="Enter Mobile Number" value={basicDetails.number} onInput={(e) => {
+                setBasicDetails(prev => ({ ...prev, number: e.target.value }))
+              }} />
+            </FormItem>
+          </FormGroup>
 
-
-          <FormItem labelContent={<span>Department</span>}>
-            <Select >
-              <Option>CUSTOMER</Option>
-              <Option>RESTURENT OWNER</Option>
-              <Option>DELIVERY BOY</Option>
-            </Select>
-          </FormItem>
-
-          <FormItem labelContent={<span>Number</span>}>
-            <Input
-              type="Number"
-              placeholder="Enter Mobile Number"
-            />
-          </FormItem>
-
-        </FormGroup>
-        <FormGroup >
-
-          <FormItem >
-            <AddressBox />
-          </FormItem>
-
-        </FormGroup>
-      </Form>
+          {showAddress && <AddressBox addressDetails={addressDetails} setaddressDetails={setaddressDetails}  />}
+        </Form>
+      </Card>
     </div>
-
-  )
+  );
 }
 
 
-function AddressBox() {
+function AddressBox({addressDetails, setaddressDetails}) {
   return (
-    <div style={{}}>
-      <Form
-        style={{}}
-      >
-        <FormGroup >
+    <FormGroup headerText="Address">
+      <FormItem labelContent={<span>Address Line 1</span>}>
+        <Input placeholder="Address Line 1" value={addressDetails.addressLine1} />
+      </FormItem>
 
-          <FormItem labelContent={<span>Address Line1</span>}>
-            <Input placeholder="addressLine1" />
-          </FormItem>
+      <FormItem labelContent={<span>Address Line 2</span>}>
+        <Input placeholder="Address Line 2" value={addressDetails.addressLine2} />
+      </FormItem>
 
-          <FormItem labelContent={<span>Address Line2</span>}>
-            <Input
-              placeholder="addressLine2"
-            />
-          </FormItem>
+      <FormItem labelContent={<span>City</span>}>
+        <Input placeholder="Enter City" value={addressDetails.city} />
+      </FormItem>
 
-        </FormGroup>
-        <FormGroup >
-
-          <FormItem labelContent={<span>City</span>}>
-            <Input placeholder="Enter City"></Input>
-          </FormItem>
-
-          <FormItem labelContent={<span>State</span>}>
-            <Input placeholder="Enter State"></Input>
-          </FormItem>
-
-        </FormGroup>
-        <FormGroup >
-
-          <FormItem labelContent={<span>Pin Code</span>}>
-            <Input placeholder="Enter Pin"></Input>
-          </FormItem>
-
-
-        </FormGroup>
-      </Form>
-    </div>
-  )
+      <FormItem labelContent={<span>State</span>}>
+        <Input placeholder="Enter State" value={addressDetails.stateProvince} />
+      </FormItem>
+    </FormGroup>
+  );
 }
