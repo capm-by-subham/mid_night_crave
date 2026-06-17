@@ -13,6 +13,7 @@ import {
   Select,
   Option,
   Card,
+  Button
 } from "@ui5/webcomponents-react";
 
 type BasicDetails = {
@@ -69,6 +70,13 @@ function Register() {
     stateProvince: "",
     postalCode: "",
   });
+
+  const isAllFill = Boolean(basicDetails.name && basicDetails.email && basicDetails.number);
+
+  function handleSubmit() {
+    console.log(basicDetails)
+    console.log(addressDetails)
+  }
 
   return (
     <div className="cardContainer">
@@ -142,6 +150,7 @@ function Register() {
             />
           )}
         </Form>
+        <Button disabled={!isAllFill} onClick={handleSubmit}>Submit</Button>
       </Card>
     </div>
   );
