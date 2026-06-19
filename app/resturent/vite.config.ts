@@ -1,7 +1,20 @@
 import { defineConfig } from 'vite'
+import AdmZip from 'adm-zip'
 import react from '@vitejs/plugin-react'
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), {
+      name: 'zip-dist', // zipping ./dist is required for BTP HTML5 repo or Application Frontend deployment
+      closeBundle() {
+        const zip = new AdmZip()
+        zip.addLocalFolder('dist')
+        zip.writeZip('dist/catalog.zip')
+      }
+  }],
+  server: {
+    proxy: {
+      '/odata': 'https://b1d9f557trial-dev-mid-night-crave-srv.cfapps.us10-001.hana.ondemand.com',
+      '/oauth': 'https://b1d9f557trial-dev-mid-night-crave-srv.cfapps.us10-001.hana.ondemand.com'
+    }
+  }
 })

@@ -24,6 +24,7 @@ modules:
         properties:
           srv-url: ${default-url}
     requires:
+      - name: mid_night_crave-auth
       - name: mid_night_crave-db
 
   - name: mid_night_crave-db-deployer
@@ -33,8 +34,45 @@ modules:
       buildpack: nodejs_buildpack
     requires:
       - name: mid_night_crave-db
+  - name: mid_night_crave
+    type: approuter.nodejs
+    path: app/router
+    parameters:
+      keep-existing-routes: true
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: mid_night_crave-auth
+    provides:
+      - name: app-api
+        properties:
+          app-protocol: ${protocol}
+          app-uri: ${default-uri}
 
 resources:
+  - name: mid_night_crave-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: mid_night_crave-${org}-${space}
+        tenant-mode: dedicated
+        oauth2-configuration:
+          credential-types:
+            - "binding-secret"
+            - "x509"
+          redirect-uris:
+            - https://*~{app-api/app-uri}/**
+    requires:
+      - name: app-api
   - name: mid_night_crave-db
     type: com.sap.xs.hdi-container
     parameters:
