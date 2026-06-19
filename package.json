@@ -5,11 +5,17 @@
     "@cap-js/hana": "^2",
     "@sap-cloud-sdk/http-client": "^4.7.0",
     "@sap/cds": "^9",
-    "@sap/xssec": "^4"
+    "@sap/xssec": "^4",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@cap-js/cds-typer": ">=0.1",
+    "@cap-js/cds-types": "^0.16.0",
     "@cap-js/sqlite": "^2.4",
-    "@sap/cds-dk": "^9"
+    "@sap/cds-dk": "^9",
+    "@types/node": "^24.0.0",
+    "tsx": "^4",
+    "typescript": "^6.0.0"
   },
   "scripts": {
     "start": "cds-serve"
@@ -25,5 +31,8 @@
         "auth": "xsuaa"
       }
     }
+  },
+  "imports": {
+    "#cds-models/*": "./@cds-models/*/index.js"
   }
 }

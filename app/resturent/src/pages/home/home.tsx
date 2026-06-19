@@ -73,9 +73,17 @@ function Register() {
 
   const isAllFill = Boolean(basicDetails.name && basicDetails.email && basicDetails.number);
 
-  function handleSubmit() {
+  async function handleSubmit() {
     console.log(basicDetails)
     console.log(addressDetails)
+    const response = await fetch('/restaurant/createUser', {
+      method: "POST",
+      body: JSON.stringify({ basicDetails: JSON.stringify(basicDetails), addressDetails: JSON.stringify(addressDetails) }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    console.log(response);
   }
 
   return (
