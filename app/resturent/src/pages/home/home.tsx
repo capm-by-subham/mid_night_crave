@@ -218,6 +218,18 @@ function AddressBox({ addressDetails, setAddressDetails }: AddressBoxProps) {
           }}
         />
       </FormItem>
+       <FormItem labelContent={<span>PIN</span>}>
+        <Input
+          placeholder="Pin Code"
+          value={addressDetails.postalCode}
+          onInput={(e) => {
+            setAddressDetails((prev) => ({
+              ...prev,
+              pin: e.target.value,
+            }));
+          }}
+        />
+      </FormItem>
     </FormGroup>
   );
 }

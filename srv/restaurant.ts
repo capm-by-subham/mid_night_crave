@@ -33,10 +33,17 @@ export class RestaurantService extends cds.ApplicationService {
   init() {
 
 
-    const {} =this.entities;
+    const { Users, Addresses } = this.entities;
+
+    async function addNewAddress(addressDetails: AddressDetails) {
+      console.log(addNewAddress)
+      await INSERT.into(Addresses).entries(addressDetails)
+      console.log(addNewAddress)
+
+    }
 
 
-    this.on("createUser", (req) => {
+    this.on("createUser", async (req) => {
       const typeCheckRes = CreateUser.safeParse(req.data);
 
       if (!typeCheckRes.success) {
@@ -46,6 +53,8 @@ export class RestaurantService extends cds.ApplicationService {
       const res = typeCheckRes.data;
 
       const { basicDetails, addressDetails } = res;
+
+      await addNewAddress(addressDetails);
 
 
 

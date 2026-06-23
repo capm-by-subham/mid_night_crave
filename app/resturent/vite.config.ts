@@ -13,7 +13,8 @@ export default defineConfig({
   }],
   server: {
     proxy: {
-      '/restaurant': 'https://port4004-workspaces-ws-8yy9y.us10.trial.applicationstudio.cloud.sap/odata/v4',
+      // '/restaurant': 'https://port4004-workspaces-ws-8yy9y.us10.trial.applicationstudio.cloud.sap/odata/v4',
+      '/restaurant': 'http://localhost:4004/odata/v4',
       // '/odata': 'https://b1d9f557trial-dev-mid-night-crave-srv.cfapps.us10-001.hana.ondemand.com',
       '/oauth': 'https://b1d9f557trial-dev-mid-night-crave-srv.cfapps.us10-001.hana.ondemand.com'
     }
