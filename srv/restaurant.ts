@@ -3,14 +3,18 @@ import cds from '@sap/cds';
 import { z } from 'zod';
 
 const BasicDetails = z.object({
+  ID: z.uuid().optional(),
   name: z.string().min(1),
   email: z.email(),
-  phone: z.string().regex(/^\d{10}$/, "Phone must be 10 digits"),
+  number: z.string().regex(/^\d{10}$/, "number must be 10 digits"),
+  type: z.enum(["C", "R", "D"]),
+  Address_ID:z.uuid().optional()
 });
 
 type BasicDetails = z.infer<typeof BasicDetails>;
 
 const AddressDetails = z.object({
+  ID: z.uuid().optional(),
   addressLine1: z.string().min(1),
   addressLine2: z.string(),
   city: z.string().min(1),
@@ -32,16 +36,7 @@ type CreateUser = z.infer<typeof CreateUser>;
 export class RestaurantService extends cds.ApplicationService {
   init() {
 
-
     const { Users, Addresses } = this.entities;
-
-    async function addNewAddress(addressDetails: AddressDetails) {
-      console.log(addNewAddress)
-      await INSERT.into(Addresses).entries(addressDetails)
-      console.log(addNewAddress)
-
-    }
-
 
     this.on("createUser", async (req) => {
       const typeCheckRes = CreateUser.safeParse(req.data);
@@ -54,12 +49,13 @@ export class RestaurantService extends cds.ApplicationService {
 
       const { basicDetails, addressDetails } = res;
 
-      await addNewAddress(addressDetails);
+      await INSERT.into(Addresses).entries(addressDetails);
 
+      basicDetails.Address_ID = addressDetails.ID;
 
+      await INSERT.into(Users).entries(basicDetails);
 
-
-
+      return basicDetails.ID;
     })
 
 

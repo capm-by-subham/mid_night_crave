@@ -20,6 +20,7 @@ type BasicDetails = {
   name: string;
   email: string;
   number: string;
+  type: "C" | "R" | "D";
 };
 
 type AddressDetails = {
@@ -62,6 +63,7 @@ function Register() {
     name: "",
     email: "",
     number: "",
+    type: "C"
   });
   const [addressDetails, setAddressDetails] = useState<AddressDetails>({
     addressLine1: "",
@@ -74,16 +76,15 @@ function Register() {
   const isAllFill = Boolean(basicDetails.name && basicDetails.email && basicDetails.number);
 
   async function handleSubmit() {
-    console.log(basicDetails)
-    console.log(addressDetails)
     const response = await fetch('/restaurant/createUser', {
       method: "POST",
-      body: JSON.stringify({ basicDetails: JSON.stringify(basicDetails), addressDetails: JSON.stringify(addressDetails) }),
+      body: JSON.stringify({ basicDetails: basicDetails, addressDetails: addressDetails }),
       headers: {
         "Content-Type": "application/json"
       }
     })
-    console.log(response);
+    const data = await response.json();   // ← parses the JSON body
+    const userId = data.value;
   }
 
   return (
@@ -123,20 +124,23 @@ function Register() {
               />
             </FormItem>
 
+
             <FormItem labelContent={<span>Department</span>}>
               <Select
-                onChange={(e) =>
-                  e.detail.selectedOption.innerText === "DELIVERY BOY"
-                    ? setShowAddress(false)
-                    : setShowAddress(true)
+                onChange={(e) => {
+                  setShowAddress(e.detail.selectedOption.innerText !== "DELIVERY BOY")
+                  setBasicDetails((prev) => ({
+                    ...prev, type: e.detail.selectedOption.value as "C" | "R" | "D"
+                  }))
+                }
+
                 }
               >
-                <Option>CUSTOMER</Option>
-                <Option>RESTAURANT OWNER</Option>
-                <Option>DELIVERY BOY</Option>
+                <Option value="C">CUSTOMER</Option>
+                <Option value="R">RESTAURANT OWNER</Option>
+                <Option value="D">DELIVERY BOY</Option>
               </Select>
             </FormItem>
-
             <FormItem labelContent={<span>Mobile Number</span>}>
               <Input
                 placeholder="Enter Mobile Number"
@@ -218,14 +222,14 @@ function AddressBox({ addressDetails, setAddressDetails }: AddressBoxProps) {
           }}
         />
       </FormItem>
-       <FormItem labelContent={<span>PIN</span>}>
+      <FormItem labelContent={<span>PIN</span>}>
         <Input
           placeholder="Pin Code"
           value={addressDetails.postalCode}
           onInput={(e) => {
             setAddressDetails((prev) => ({
               ...prev,
-              pin: e.target.value,
+              postalCode: e.target.value,
             }));
           }}
         />
