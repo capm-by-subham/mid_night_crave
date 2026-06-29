@@ -62,3 +62,5 @@ export class RestaurantService extends cds.ApplicationService {
     return super.init();
   }
 }
+
+// resend api key :=> re_CrpFha74_4wrrTR4aQ2Jmrsz1bRmP2UNp
