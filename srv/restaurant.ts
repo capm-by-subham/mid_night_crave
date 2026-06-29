@@ -8,7 +8,7 @@ const BasicDetails = z.object({
   email: z.email(),
   number: z.string().regex(/^\d{10}$/, "number must be 10 digits"),
   type: z.enum(["C", "R", "D"]),
-  Address_ID:z.uuid().optional()
+  Address_ID: z.uuid().optional()
 });
 
 type BasicDetails = z.infer<typeof BasicDetails>;

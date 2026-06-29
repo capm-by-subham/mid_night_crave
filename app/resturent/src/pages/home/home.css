@@ -1,9 +1,0 @@
-.MainContainer {
-  height: 100vh;
-}
-
-.cardContainer {
-  display: "flex";
-  justify-content: "center";
-  padding: "2rem";
-}
