@@ -49,6 +49,8 @@ export class RestaurantService extends cds.ApplicationService {
 
       const { basicDetails, addressDetails } = res;
 
+      // firrt need to valid email beofre create the USer
+
       await INSERT.into(Addresses).entries(addressDetails);
 
       basicDetails.Address_ID = addressDetails.ID;

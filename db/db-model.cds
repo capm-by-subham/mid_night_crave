@@ -138,3 +138,10 @@ entity Coupons : cuid, managed {
     usesCount     : Integer default 0;
     isActive      : Boolean default true;
 }
+
+entity OtpValidation {
+    key email     : String(100);
+        otp       : String(4);
+        validUpTo : DateTime;
+        attempt: Integer;
+}

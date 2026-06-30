@@ -80,6 +80,8 @@ function RegisterPage() {
     postalCode: "",
   });
 
+  const navigate = useNavigate();
+
   const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(basicDetails.email);
 
   const isAllFill = Boolean(
@@ -97,9 +99,10 @@ function RegisterPage() {
         "Content-Type": "application/json",
       },
     });
-    const data = await response.json();
+    const data = await response.json();// firrt need to valid email beofre create the USer
     const userId = data.value;
     console.log(userId);
+    navigate("/OtpValidate")
   }
 
   return (

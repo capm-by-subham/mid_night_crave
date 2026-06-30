@@ -1,0 +1,122 @@
+/* OTP page */
+
+/* ── Full-page centering ── */
+.otp-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #0f0e17;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* ── Card ── */
+.otp-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 2.5rem 2rem;
+  background: #1a1926;
+  border: 1px solid #2a2938;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.otp-icon {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+.otp-heading {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fffffe;
+}
+
+.otp-desc {
+  margin: 0 0 1rem;
+  font-size: 0.88rem;
+  color: #a7a9be;
+}
+
+/* ── Widget wrapper ── */
+.otp-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ── Input row ── */
+.otp-inputs {
+  display: flex;
+  gap: 12px;
+}
+
+/* ── Individual box ── */
+.otp-box {
+  width: 52px;
+  height: 58px;
+  background: #0f0e17;
+  border: 1.5px solid #2e2d3d;
+  border-radius: 8px;
+  color: #fffffe;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: center;
+  caret-color: #ff6b35;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  -moz-appearance: textfield;
+}
+
+.otp-box::-webkit-outer-spin-button,
+.otp-box::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.otp-box:focus {
+  border-color: #ff6b35;
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.18);
+}
+
+.otp-box:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Tones ── */
+.otp-box--error         { border-color: #ef4444; }
+.otp-box--error:focus   { box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.18); }
+
+.otp-box--success       { border-color: #22c55e; }
+.otp-box--success:focus { box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18); }
+
+.otp-box--info          { border-color: #3b82f6; }
+.otp-box--info:focus    { box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18); }
+
+/* ── Slot ── */
+.otp-slot {
+  min-height: 20px;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+  color: #a7a9be;
+}
+
+.otp-slot:empty        { visibility: hidden; }
+.otp-slot--error       { color: #ef4444; }
+.otp-slot--success     { color: #22c55e; }
+.otp-slot--info        { color: #3b82f6; }
+
+/* ── Mobile ── */
+@media (max-width: 400px) {
+  .otp-card { padding: 2rem 1.25rem; }
+  .otp-box  { width: 44px; height: 52px; font-size: 20px; }
+  .otp-inputs { gap: 8px; }
+}
