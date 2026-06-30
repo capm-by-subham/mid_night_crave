@@ -27,12 +27,18 @@ export default function Register() {
 
   return (
     <div className="rg-root">
-
       {/* ── Left panel ── */}
       <div className="rg-left">
-        <div className="rg-brand" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
+        <div
+          className="rg-brand"
+          onClick={() => navigate("/")}
+        >
           <span className="rg-moon">🌙</span>
-          <h1 className="rg-title">MidNight<br />Crave</h1>
+          <h1 className="rg-title">
+            MidNight
+            <br />
+            Crave
+          </h1>
         </div>
 
         <ul className="rg-perks">
@@ -46,11 +52,12 @@ export default function Register() {
       <div className="rg-right">
         <div className="rg-card">
           <h2 className="rg-card-title">Create your account</h2>
-          <p className="rg-card-sub">Fill in the details below to get started</p>
+          <p className="rg-card-sub">
+            Fill in the details below to get started
+          </p>
           <RegisterPage />
         </div>
       </div>
-
     </div>
   );
 }
@@ -62,7 +69,7 @@ function RegisterPage() {
     name: "",
     email: "@gmail.com",
     number: "",
-    type: "C"
+    type: "C",
   });
 
   const [addressDetails, setAddressDetails] = useState<AddressDetails>({
@@ -76,27 +83,33 @@ function RegisterPage() {
   const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(basicDetails.email);
 
   const isAllFill = Boolean(
-    basicDetails.name &&
-    isValidEmail &&
-    basicDetails.number
+    basicDetails.name && isValidEmail && basicDetails.number,
   );
 
   async function handleSubmit() {
-    const response = await fetch('/restaurant/createUser', {
+    const response = await fetch("/restaurant/createUser", {
       method: "POST",
-      body: JSON.stringify({ basicDetails: basicDetails, addressDetails: addressDetails }),
+      body: JSON.stringify({
+        basicDetails: basicDetails,
+        addressDetails: addressDetails,
+      }),
       headers: {
-        "Content-Type": "application/json"
-      }
-    })
+        "Content-Type": "application/json",
+      },
+    });
     const data = await response.json();
     const userId = data.value;
     console.log(userId);
   }
 
   return (
-    <form className="rg-form" onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-
+    <form
+      className="rg-form"
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit();
+      }}
+    >
       <section className="rg-section">
         <h3 className="rg-section-title">Personal Details</h3>
 
@@ -133,13 +146,17 @@ function RegisterPage() {
         <div className="rg-field">
           <label className="rg-label">Department</label>
           <select
+            aria-label="Department"
             className="rg-select"
             value={basicDetails.type}
             onChange={(e) => {
-              setShowAddress(e.target.options[e.target.selectedIndex].text !== "DELIVERY BOY");
+              setShowAddress(
+                e.target.options[e.target.selectedIndex].text !==
+                  "DELIVERY BOY",
+              );
               setBasicDetails((prev) => ({
                 ...prev,
-                type: e.target.value as "C" | "R" | "D"
+                type: e.target.value as "C" | "R" | "D",
               }));
             }}
           >
@@ -175,7 +192,6 @@ function RegisterPage() {
       <button type="submit" className="rg-submit" disabled={!isAllFill}>
         Create Account
       </button>
-
     </form>
   );
 }
