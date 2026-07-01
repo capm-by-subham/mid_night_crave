@@ -140,8 +140,8 @@ entity Coupons : cuid, managed {
 }
 
 entity OtpValidation {
-    key email     : String(100);
-        otp       : String(4);
-        validUpTo : DateTime;
-        attempt: Integer;
+    key email     : String(100) not null;
+        otp       : String(4) not null;
+        validUpTo : DateTime not null;
+        attempt   : Integer default 0;
 }
