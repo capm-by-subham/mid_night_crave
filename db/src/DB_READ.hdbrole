@@ -1,0 +1,10 @@
+{
+    "role":{
+        "name":"DB_READ",
+        "object_privileges":[{
+            "name":"DB_USER",
+            "type":"TABLE",
+            "privileges": ["SELECT"]
+        }]
+    }
+}
