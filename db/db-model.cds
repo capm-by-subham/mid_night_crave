@@ -145,3 +145,11 @@ entity OtpValidation {
         validUpTo : DateTime not null;
         attempt   : Integer default 0;
 }
+
+@cds.persistence.exists
+entity USERDETAILS {
+    NAME       : String(100);
+    EMAIL      : String(200);
+    city       : String(100);
+    postalCode : String(20);
+}

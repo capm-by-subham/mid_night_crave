@@ -49,4 +49,6 @@ service RestaurantService {
     entity Food        as projection on db.Food;
 
     action createUser(basicDetails: BasicDetailsT, addressDetails: AddressDetailsT) returns db.User:ID;
+
+    entity getUserDetails as projection on db.USERDETAILS; // just for exper
 }

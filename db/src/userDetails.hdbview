@@ -1,0 +1,9 @@
+VIEW DB_USERDETAILS AS
+
+SELECT U.NAME , U.EMAIL , A.city , A.postalCode
+
+FROM DB_USER AS U 
+
+LEFT OUTER JOIN DB_Addresses AS A 
+
+ON U.Address_ID = A.ID ;

@@ -49,7 +49,7 @@ export class RestaurantService extends cds.ApplicationService {
 
       const { basicDetails, addressDetails } = res;
 
-      // firrt need to valid email beofre create the USer
+      // firrt need to valid email before create the User
 
       await INSERT.into(Addresses).entries(addressDetails);
 
