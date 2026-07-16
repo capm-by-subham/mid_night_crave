@@ -1,11 +1,20 @@
 {
-    "role":{
-        "name":"DB_READ_GRANTOR#",
-        "object_privileges":[
+    "role": {
+        "name": "DB_READ_GRANTOR#",
+        "object_privileges": [
             {
-                "name":"DB_USER",
-                "type":"TABLE",
-                "privileges_with_grant_option":["SELECT"]
+                "name": "DB_USER",
+                "type": "TABLE",
+                "privileges_with_grant_option": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "DB_ADDRESSES",
+                "type": "TABLE",
+                "privileges_with_grant_option": [
+                    "SELECT"
+                ]
             }
         ]
     }

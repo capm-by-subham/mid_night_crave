@@ -1,5 +1,5 @@
 ID,name,description,rating,cuisine,Address_ID,createdAt,createdBy,modifiedAt,modifiedBy
-r1111111-1111-4111-8111-111111111111,Punjabi Tadka,Authentic North Indian dhaba-style food,4.6,North Indian,aa111111-1111-4111-8111-111111111111,2026-05-10T09:00:00Z,system,2026-05-10T09:00:00Z,system
-r2222222-2222-4222-8222-222222222222,Dakshin Delight,Traditional South Indian tiffin and meals,4.8,South Indian,bb222222-2222-4222-8222-222222222222,2026-05-11T09:00:00Z,system,2026-05-11T09:00:00Z,system
-r3333333-3333-4333-8333-333333333333,Bombay Street Kitchen,Mumbai street food and chaats,4.5,Street Food,cc333333-3333-4333-8333-333333333333,2026-05-12T09:00:00Z,system,2026-05-12T09:00:00Z,system
-r4444444-4444-4444-8444-444444444444,Biryani Bros,Hyderabadi dum biryani specialists,4.9,Hyderabadi,dd444444-4444-4444-8444-444444444444,2026-05-13T09:00:00Z,system,2026-05-13T09:00:00Z,system
+a2000001-0000-4000-8000-000000000001,Punjabi Tadka,Authentic North Indian dhaba-style food,4.6,North Indian,a0000010-0000-4000-8000-000000000010,2026-05-10T09:00:00Z,system,2026-05-10T09:00:00Z,system
+a2000002-0000-4000-8000-000000000002,Dakshin Delight,Traditional South Indian tiffin and meals,4.8,South Indian,a0000011-0000-4000-8000-000000000011,2026-05-11T09:00:00Z,system,2026-05-11T09:00:00Z,system
+a2000003-0000-4000-8000-000000000003,Bombay Street Kitchen,Mumbai street food and chaats,4.5,Street Food,a0000012-0000-4000-8000-000000000012,2026-05-12T09:00:00Z,system,2026-05-12T09:00:00Z,system
+a2000004-0000-4000-8000-000000000004,Biryani Bros,Hyderabadi dum biryani specialists,4.9,Hyderabadi,a0000013-0000-4000-8000-000000000013,2026-05-13T09:00:00Z,system,2026-05-13T09:00:00Z,system

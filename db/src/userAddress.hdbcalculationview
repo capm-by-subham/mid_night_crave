@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="userAddress" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="true" application="BAS">
+<descriptions defaultDescription="userAddress"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="DB_USER">
+    <resourceUri>DB_USER</resourceUri>
+  </DataSource>
+  <DataSource id="DB_ADDRESSES">
+    <resourceUri>DB_ADDRESSES</resourceUri>
+  </DataSource>
+  <DataSource id="DB_ORDERS">
+    <resourceUri>DB_ORDERS</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="user_Address" cardinality="C1_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="EMAIL"/>
+      <viewAttribute id="NUMBER"/>
+      <viewAttribute id="CITY"/>
+      <viewAttribute id="STATEPROVINCE"/>
+      <viewAttribute id="POSTALCODE"/>
+      <viewAttribute id="ID"/>
+      <viewAttribute hidden="true" id="JOIN$ADDRESS_ID$ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="DB_USER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMAIL" source="EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER" source="NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ADDRESS_ID$ID" source="ADDRESS_ID"/>
+    </input>
+    <input node="DB_ADDRESSES">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CITY" source="CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="STATEPROVINCE" source="STATEPROVINCE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="POSTALCODE" source="POSTALCODE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ADDRESS_ID$ID" source="ID"/>
+    </input>
+    <joinAttribute name="JOIN$ADDRESS_ID$ID"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="user_order" cardinality="C1_1" joinType="inner" filterExpressionLanguage="SQL">
+    <viewAttributes>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="EMAIL"/>
+      <viewAttribute id="NUMBER"/>
+      <viewAttribute id="NETAMOUNT"/>
+      <viewAttribute id="ORDERSTATUS"/>
+      <viewAttribute id="ORDERNUMBER"/>
+      <viewAttribute hidden="true" id="JOIN$ID$DELVERYPERSON_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="user_Address">
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="EMAIL" source="EMAIL"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NUMBER" source="NUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ID$DELVERYPERSON_ID" source="ID"/>
+    </input>
+    <input node="DB_ORDERS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDERNUMBER" source="ORDERNUMBER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NETAMOUNT" source="NETAMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDERSTATUS" source="ORDERSTATUS"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$ID$DELVERYPERSON_ID" source="DELVERYPERSON_ID"/>
+    </input>
+    <joinAttribute name="JOIN$ID$DELVERYPERSON_ID"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="user_order">
+  <attributes>
+    <attribute id="NAME" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME"/>
+      <keyMapping columnObjectName="user_order" columnName="NAME"/>
+    </attribute>
+    <attribute id="EMAIL" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMAIL"/>
+      <keyMapping columnObjectName="user_order" columnName="EMAIL"/>
+    </attribute>
+    <attribute id="NUMBER" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NUMBER"/>
+      <keyMapping columnObjectName="user_order" columnName="NUMBER"/>
+    </attribute>
+    <attribute id="NETAMOUNT" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NETAMOUNT"/>
+      <keyMapping columnObjectName="user_order" columnName="NETAMOUNT"/>
+    </attribute>
+    <attribute id="ORDERSTATUS" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDERSTATUS"/>
+      <keyMapping columnObjectName="user_order" columnName="ORDERSTATUS"/>
+    </attribute>
+    <attribute id="ORDERNUMBER" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDERNUMBER"/>
+      <keyMapping columnObjectName="user_order" columnName="ORDERNUMBER"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="100" y="105"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="user_Address" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="187" y="437"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="DB_USER" modelObjectNameSpace="user_Address" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="91" y="30"/>
+      <rectangleSize width="176.296875"/>
+    </shape>
+    <shape modelObjectName="DB_ADDRESSES" modelObjectNameSpace="user_Address" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="197.27099609375"/>
+    </shape>
+    <shape expanded="true" modelObjectName="user_order" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="190" y="228"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="user_Address" modelObjectNameSpace="user_order" modelObjectType="JoinNodeInput" multiJoinViewNodeName="user_order">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="197.27099609375"/>
+    </shape>
+    <shape modelObjectName="DB_ORDERS" modelObjectNameSpace="user_order" modelObjectType="JoinNodeInput" multiJoinViewNodeName="user_order">
+      <upperLeftCorner x="660" y="-5"/>
+      <rectangleSize width="228.86376953125"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,10 +1,21 @@
 {
-    "role":{
-        "name":"DB_READ",
-        "object_privileges":[{
-            "name":"DB_USER",
-            "type":"TABLE",
-            "privileges": ["SELECT"]
-        }]
+    "role": {
+        "name": "DB_READ",
+        "object_privileges": [
+            {
+                "name": "DB_USER",
+                "type": "TABLE",
+                "privileges": [
+                    "SELECT"
+                ]
+            },
+            {
+                "name": "DB_ADDRESSES",
+                "type": "TABLE",
+                "privileges": [
+                    "SELECT"
+                ]
+            }
+        ]
     }
 }
