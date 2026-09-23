@@ -1,0 +1,475 @@
+@server=http://localhost:4004
+@username=alice
+@password=
+
+
+### Users
+# @name Users_GET
+GET {{server}}/odata/v4/restaurant/Users
+Authorization: Basic {{username}}:{{password}}
+
+
+### Users
+# @name Users_POST
+POST {{server}}/odata/v4/restaurant/Users
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "15331376-4299-4539-9442-0a8cbbd6a0f7",
+  "name": "name-15331376",
+  "email": "subhamsahoo.js@gmail.com",
+  "number": "9348514583",
+  "type": "Customer",
+  "Address": {
+    "ID": "31121190-504d-4ba6-9e0e-479d352bb4c8"
+  }
+}
+
+
+### Users
+# @name Users_PATCH
+PATCH {{server}}/odata/v4/restaurant/Users/15331376-4299-4539-9442-0a8cbbd6a0f7
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "15331376-4299-4539-9442-0a8cbbd6a0f7",
+  "name": "name-15331376",
+  "email": "email-15331376",
+  "number": "r-15331376",
+  "type": "Customer",
+  "Address": {
+    "ID": "31121190-504d-4ba6-9e0e-479d352bb4c8"
+  }
+}
+
+
+### Users
+# @name Users_DELETE
+DELETE {{server}}/odata/v4/restaurant/Users/15331376-4299-4539-9442-0a8cbbd6a0f7
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### Addresses
+# @name Addresses_GET
+GET {{server}}/odata/v4/restaurant/Addresses
+Authorization: Basic {{username}}:{{password}}
+
+
+### Addresses
+# @name Addresses_POST
+POST {{server}}/odata/v4/restaurant/Addresses
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "31121190-504d-4ba6-9e0e-479d352bb4c8",
+  "addressLine1": "addressLine1-31121190",
+  "addressLine2": "addressLine2-31121190",
+  "city": "city-31121190",
+  "stateProvince": "stateProvince-31121190",
+  "postalCode": "postalCode-31121190"
+}
+
+
+### Addresses
+# @name Addresses_PATCH
+PATCH {{server}}/odata/v4/restaurant/Addresses/31121190-504d-4ba6-9e0e-479d352bb4c8
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "31121190-504d-4ba6-9e0e-479d352bb4c8",
+  "addressLine1": "addressLine1-31121190",
+  "addressLine2": "addressLine2-31121190",
+  "city": "city-31121190",
+  "stateProvince": "stateProvince-31121190",
+  "postalCode": "postalCode-31121190"
+}
+
+
+### Addresses
+# @name Addresses_DELETE
+DELETE {{server}}/odata/v4/restaurant/Addresses/31121190-504d-4ba6-9e0e-479d352bb4c8
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### Restaurants
+# @name Restaurants_GET
+GET {{server}}/odata/v4/restaurant/Restaurants
+Authorization: Basic {{username}}:{{password}}
+
+
+### Restaurants
+# @name Restaurants_POST
+POST {{server}}/odata/v4/restaurant/Restaurants
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "55225ae6-6f03-4cb3-8339-0197cbc1031f",
+  "name": "name-55225",
+  "description": "description-55225",
+  "cuisine": "cuisine-55225",
+  "Address": {
+    "ID": "31121190-504d-4ba6-9e0e-479d352bb4c8"
+  },
+  "menu": [
+    {
+      "ID": "9488941a-e4bb-4bbb-b3ae-f8c4e097e315",
+      "name": "name-9488941",
+      "description": "description-9488941",
+      "price": 21433137.2,
+      "image": "image-9488941",
+      "itmes": [
+        {
+          "ID": "14665919-9436-4922-8d6a-29ced7572834",
+          "name": "name-14665919",
+          "description": "description-14665919",
+          "price": 27448226.85,
+          "isAvailable": false,
+          "imageUrl": "imageUrl-14665919",
+          "createdAt": "2005-11-25T00:00:00.000Z",
+          "createdBy": "createdBy.8qcan@example.org",
+          "modifiedAt": "2020-09-13T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.8qcan@example.net"
+        },
+        {
+          "ID": "14665920-f760-4518-b329-64df15f67648",
+          "name": "name-14665920",
+          "description": "description-14665920",
+          "price": 80559009.83,
+          "isAvailable": true,
+          "imageUrl": "imageUrl-14665920",
+          "createdAt": "2008-04-22T00:00:00.000Z",
+          "createdBy": "createdBy.8qcao@example.net",
+          "modifiedAt": "2018-01-25T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.8qcao@example.com"
+        }
+      ],
+      "createdAt": "2008-03-17T00:00:00.000Z",
+      "createdBy": "createdBy.5ndpp@example.net",
+      "modifiedAt": "2010-04-26T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.5ndpp@example.com"
+    },
+    {
+      "ID": "9488942c-5cf0-42c1-9790-57e5fa4319f8",
+      "name": "name-9488942",
+      "description": "description-9488942",
+      "price": 13723214.6,
+      "image": "image-9488942",
+      "itmes": [
+        {
+          "ID": "27422696-b39a-4a74-b3e0-632de0de4e16",
+          "name": "name-27422696",
+          "description": "description-27422696",
+          "price": 57282408.57,
+          "isAvailable": true,
+          "imageUrl": "imageUrl-27422696",
+          "createdAt": "2007-04-14T00:00:00.000Z",
+          "createdBy": "createdBy.gbrhk@example.org",
+          "modifiedAt": "2009-08-06T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.gbrhk@example.org"
+        },
+        {
+          "ID": "27422697-700d-4e4a-af6a-603229667a00",
+          "name": "name-27422697",
+          "description": "description-27422697",
+          "price": 56927573.68,
+          "isAvailable": false,
+          "imageUrl": "imageUrl-27422697",
+          "createdAt": "2009-12-18T00:00:00.000Z",
+          "createdBy": "createdBy.gbrhl@example.org",
+          "modifiedAt": "2013-07-27T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.gbrhl@example.org"
+        }
+      ],
+      "createdAt": "2016-12-28T00:00:00.000Z",
+      "createdBy": "createdBy.5ndpq@example.net",
+      "modifiedAt": "2003-06-28T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.5ndpq@example.net"
+    }
+  ]
+}
+
+
+### Restaurants
+# @name Restaurants_PATCH
+PATCH {{server}}/odata/v4/restaurant/Restaurants/55225ae6-6f03-4cb3-8339-0197cbc1031f
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "55225ae6-6f03-4cb3-8339-0197cbc1031f",
+  "name": "name-55225",
+  "description": "description-55225",
+  "cuisine": "cuisine-55225",
+  "Address": {
+    "ID": "31121190-504d-4ba6-9e0e-479d352bb4c8"
+  },
+  "menu": [
+    {
+      "ID": "9488941a-e4bb-4bbb-b3ae-f8c4e097e315",
+      "name": "name-9488941",
+      "description": "description-9488941",
+      "price": 21433137.2,
+      "image": "image-9488941",
+      "itmes": [
+        {
+          "ID": "14665919-9436-4922-8d6a-29ced7572834",
+          "name": "name-14665919",
+          "description": "description-14665919",
+          "price": 27448226.85,
+          "isAvailable": false,
+          "imageUrl": "imageUrl-14665919",
+          "createdAt": "2005-11-25T00:00:00.000Z",
+          "createdBy": "createdBy.8qcan@example.org",
+          "modifiedAt": "2020-09-13T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.8qcan@example.net"
+        },
+        {
+          "ID": "14665920-f760-4518-b329-64df15f67648",
+          "name": "name-14665920",
+          "description": "description-14665920",
+          "price": 80559009.83,
+          "isAvailable": true,
+          "imageUrl": "imageUrl-14665920",
+          "createdAt": "2008-04-22T00:00:00.000Z",
+          "createdBy": "createdBy.8qcao@example.net",
+          "modifiedAt": "2018-01-25T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.8qcao@example.com"
+        }
+      ],
+      "createdAt": "2008-03-17T00:00:00.000Z",
+      "createdBy": "createdBy.5ndpp@example.net",
+      "modifiedAt": "2010-04-26T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.5ndpp@example.com"
+    },
+    {
+      "ID": "9488942c-5cf0-42c1-9790-57e5fa4319f8",
+      "name": "name-9488942",
+      "description": "description-9488942",
+      "price": 13723214.6,
+      "image": "image-9488942",
+      "itmes": [
+        {
+          "ID": "27422696-b39a-4a74-b3e0-632de0de4e16",
+          "name": "name-27422696",
+          "description": "description-27422696",
+          "price": 57282408.57,
+          "isAvailable": true,
+          "imageUrl": "imageUrl-27422696",
+          "createdAt": "2007-04-14T00:00:00.000Z",
+          "createdBy": "createdBy.gbrhk@example.org",
+          "modifiedAt": "2009-08-06T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.gbrhk@example.org"
+        },
+        {
+          "ID": "27422697-700d-4e4a-af6a-603229667a00",
+          "name": "name-27422697",
+          "description": "description-27422697",
+          "price": 56927573.68,
+          "isAvailable": false,
+          "imageUrl": "imageUrl-27422697",
+          "createdAt": "2009-12-18T00:00:00.000Z",
+          "createdBy": "createdBy.gbrhl@example.org",
+          "modifiedAt": "2013-07-27T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.gbrhl@example.org"
+        }
+      ],
+      "createdAt": "2016-12-28T00:00:00.000Z",
+      "createdBy": "createdBy.5ndpq@example.net",
+      "modifiedAt": "2003-06-28T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.5ndpq@example.net"
+    }
+  ]
+}
+
+
+### Restaurants
+# @name Restaurants_DELETE
+DELETE {{server}}/odata/v4/restaurant/Restaurants/55225ae6-6f03-4cb3-8339-0197cbc1031f
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### MenuItems
+# @name MenuItems_GET
+GET {{server}}/odata/v4/restaurant/MenuItems
+Authorization: Basic {{username}}:{{password}}
+
+
+### MenuItems
+# @name MenuItems_POST
+POST {{server}}/odata/v4/restaurant/MenuItems
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "9488941a-e4bb-4bbb-b3ae-f8c4e097e315",
+  "name": "name-9488941",
+  "description": "description-9488941",
+  "price": 21433137.2,
+  "image": "image-9488941",
+  "itmes": [
+    {
+      "ID": "14665919-9436-4922-8d6a-29ced7572834",
+      "name": "name-14665919",
+      "description": "description-14665919",
+      "price": 27448226.85,
+      "isAvailable": false,
+      "imageUrl": "imageUrl-14665919",
+      "createdAt": "2005-11-25T00:00:00.000Z",
+      "createdBy": "createdBy.8qcan@example.org",
+      "modifiedAt": "2020-09-13T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.8qcan@example.net"
+    },
+    {
+      "ID": "14665920-f760-4518-b329-64df15f67648",
+      "name": "name-14665920",
+      "description": "description-14665920",
+      "price": 80559009.83,
+      "isAvailable": true,
+      "imageUrl": "imageUrl-14665920",
+      "createdAt": "2008-04-22T00:00:00.000Z",
+      "createdBy": "createdBy.8qcao@example.net",
+      "modifiedAt": "2018-01-25T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.8qcao@example.com"
+    }
+  ],
+  "createdAt": "2008-03-17T00:00:00.000Z",
+  "createdBy": "createdBy.5ndpp@example.net",
+  "modifiedAt": "2010-04-26T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.5ndpp@example.com"
+}
+
+
+### MenuItems
+# @name MenuItems_PATCH
+PATCH {{server}}/odata/v4/restaurant/MenuItems/9488941a-e4bb-4bbb-b3ae-f8c4e097e315
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "9488941a-e4bb-4bbb-b3ae-f8c4e097e315",
+  "name": "name-9488941",
+  "description": "description-9488941",
+  "price": 21433137.2,
+  "image": "image-9488941",
+  "itmes": [
+    {
+      "ID": "14665919-9436-4922-8d6a-29ced7572834",
+      "name": "name-14665919",
+      "description": "description-14665919",
+      "price": 27448226.85,
+      "isAvailable": false,
+      "imageUrl": "imageUrl-14665919",
+      "createdAt": "2005-11-25T00:00:00.000Z",
+      "createdBy": "createdBy.8qcan@example.org",
+      "modifiedAt": "2020-09-13T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.8qcan@example.net"
+    },
+    {
+      "ID": "14665920-f760-4518-b329-64df15f67648",
+      "name": "name-14665920",
+      "description": "description-14665920",
+      "price": 80559009.83,
+      "isAvailable": true,
+      "imageUrl": "imageUrl-14665920",
+      "createdAt": "2008-04-22T00:00:00.000Z",
+      "createdBy": "createdBy.8qcao@example.net",
+      "modifiedAt": "2018-01-25T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.8qcao@example.com"
+    }
+  ],
+  "createdAt": "2008-03-17T00:00:00.000Z",
+  "createdBy": "createdBy.5ndpp@example.net",
+  "modifiedAt": "2010-04-26T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.5ndpp@example.com"
+}
+
+
+### MenuItems
+# @name MenuItems_DELETE
+DELETE {{server}}/odata/v4/restaurant/MenuItems/9488941a-e4bb-4bbb-b3ae-f8c4e097e315
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### Food
+# @name Food_GET
+GET {{server}}/odata/v4/restaurant/Food
+Authorization: Basic {{username}}:{{password}}
+
+
+### Food
+# @name Food_POST
+POST {{server}}/odata/v4/restaurant/Food
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "14665919-9436-4922-8d6a-29ced7572834",
+  "name": "name-14665919",
+  "description": "description-14665919",
+  "price": 27448226.85,
+  "isAvailable": false,
+  "imageUrl": "imageUrl-14665919",
+  "createdAt": "2005-11-25T00:00:00.000Z",
+  "createdBy": "createdBy.8qcan@example.org",
+  "modifiedAt": "2020-09-13T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.8qcan@example.net"
+}
+
+
+### Food
+# @name Food_PATCH
+PATCH {{server}}/odata/v4/restaurant/Food/14665919-9436-4922-8d6a-29ced7572834
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "ID": "14665919-9436-4922-8d6a-29ced7572834",
+  "name": "name-14665919",
+  "description": "description-14665919",
+  "price": 27448226.85,
+  "isAvailable": false,
+  "imageUrl": "imageUrl-14665919",
+  "createdAt": "2005-11-25T00:00:00.000Z",
+  "createdBy": "createdBy.8qcan@example.org",
+  "modifiedAt": "2020-09-13T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.8qcan@example.net"
+}
+
+
+### Food
+# @name Food_DELETE
+DELETE {{server}}/odata/v4/restaurant/Food/14665919-9436-4922-8d6a-29ced7572834
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### createUser
+# @name createUser_POST
+POST {{server}}/odata/v4/restaurant/createUser
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "basicDetails": {
+    "name": "Subham",
+    "email": "subhamsahoo.js@gmail.com",
+    "number": "9348514583",
+    "type": "R"
+  },
+  "addressDetails": {
+    "addressLine1": "addressLine1-17572276",
+    "addressLine2": "addressLine2-17572276",
+    "city": "city-17572276",
+    "stateProvince": "stateProvince-17572276",
+    "postalCode": "766100"
+  }
+}

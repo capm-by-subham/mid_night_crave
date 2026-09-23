@@ -143,6 +143,5 @@ entity OtpValidation {
     key email     : String(100) not null;
         otp       : String(4) not null;
         validUpTo : DateTime not null;
-        attempt   : Integer default 0;
+        attempt   : Integer default 4;
 }
-

@@ -1,36 +1,8 @@
 import cds from '@sap/cds';
 
-import { z } from 'zod';
+import verifyMail from "./mail";
 
-const BasicDetails = z.object({
-  ID: z.uuid().optional(),
-  name: z.string().min(1),
-  email: z.email(),
-  number: z.string().regex(/^\d{10}$/, "number must be 10 digits"),
-  type: z.enum(["C", "R", "D"]),
-  Address_ID: z.uuid().optional()
-});
-
-type BasicDetails = z.infer<typeof BasicDetails>;
-
-const AddressDetails = z.object({
-  ID: z.uuid().optional(),
-  addressLine1: z.string().min(1),
-  addressLine2: z.string(),
-  city: z.string().min(1),
-  stateProvince: z.string().min(1),
-  postalCode: z.string().length(6, "Postal code must be 6 digits"),
-})
-
-type AddressDetails = z.infer<typeof AddressDetails>;
-
-
-const CreateUser = z.object({
-  basicDetails: BasicDetails,
-  addressDetails: AddressDetails
-});
-
-type CreateUser = z.infer<typeof CreateUser>;
+import { CreateUser } from "./zod";
 
 
 export class RestaurantService extends cds.ApplicationService {
@@ -51,6 +23,8 @@ export class RestaurantService extends cds.ApplicationService {
 
       // firrt need to valid email before create the User
 
+      await verifyMail(basicDetails.email);
+
       await INSERT.into(Addresses).entries(addressDetails);
 
       basicDetails.Address_ID = addressDetails.ID;
@@ -65,4 +39,5 @@ export class RestaurantService extends cds.ApplicationService {
   }
 }
 
-// resend api key :=> re_CrpFha74_4wrrTR4aQ2Jmrsz1bRmP2UNp
+
+

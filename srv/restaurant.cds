@@ -21,7 +21,7 @@ type AddressDetailsT {
 };
 
 service RestaurantService {
-    entity Users       as
+    entity Users         as
         projection on db.User {
             ID,
             name,
@@ -31,9 +31,9 @@ service RestaurantService {
             Address
         }
 
-    entity Addresses   as projection on db.Addresses;
+    entity Addresses     as projection on db.Addresses;
 
-    entity Restaurants as
+    entity Restaurants   as
         projection on db.Restaurant {
             ID,
             name,
@@ -44,9 +44,12 @@ service RestaurantService {
         }
 
 
-    entity MenuItems   as projection on db.MenuItems;
+    entity MenuItems     as projection on db.MenuItems;
 
-    entity Food        as projection on db.Food;
+    entity Food          as projection on db.Food;
+
+
+    entity OtpValidation as projection on db.OtpValidation;
 
     action createUser(basicDetails: BasicDetailsT, addressDetails: AddressDetailsT) returns db.User:ID;
 }
