@@ -51,5 +51,16 @@ service RestaurantService {
 
     entity OtpValidation as projection on db.OtpValidation;
 
+    action verifyEmail(email: String)                                               returns {
+        message : String(50);
+        success : Boolean;
+    };
+
+    action verifyOtp(email: String, otp: String(4))                                 returns {
+        message : String(50);
+        attempt : String(50);
+        isValid : Boolean;
+    };
+
     action createUser(basicDetails: BasicDetailsT, addressDetails: AddressDetailsT) returns db.User:ID;
 }

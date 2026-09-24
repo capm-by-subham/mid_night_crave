@@ -16,38 +16,38 @@ Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 {
-  "ID": "15331376-4299-4539-9442-0a8cbbd6a0f7",
-  "name": "name-15331376",
-  "email": "subhamsahoo.js@gmail.com",
-  "number": "9348514583",
+  "ID": "30578040-26c9-4d35-ae93-544567f3cb82",
+  "name": "name-30578040",
+  "email": "email-30578040",
+  "number": "r-30578040",
   "type": "Customer",
   "Address": {
-    "ID": "31121190-504d-4ba6-9e0e-479d352bb4c8"
+    "ID": "25928986-9572-49fc-adaa-bfde6821bb50"
   }
 }
 
 
 ### Users
 # @name Users_PATCH
-PATCH {{server}}/odata/v4/restaurant/Users/15331376-4299-4539-9442-0a8cbbd6a0f7
+PATCH {{server}}/odata/v4/restaurant/Users/30578040-26c9-4d35-ae93-544567f3cb82
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 {
-  "ID": "15331376-4299-4539-9442-0a8cbbd6a0f7",
-  "name": "name-15331376",
-  "email": "email-15331376",
-  "number": "r-15331376",
+  "ID": "30578040-26c9-4d35-ae93-544567f3cb82",
+  "name": "name-30578040",
+  "email": "email-30578040",
+  "number": "r-30578040",
   "type": "Customer",
   "Address": {
-    "ID": "31121190-504d-4ba6-9e0e-479d352bb4c8"
+    "ID": "25928986-9572-49fc-adaa-bfde6821bb50"
   }
 }
 
 
 ### Users
 # @name Users_DELETE
-DELETE {{server}}/odata/v4/restaurant/Users/15331376-4299-4539-9442-0a8cbbd6a0f7
+DELETE {{server}}/odata/v4/restaurant/Users/30578040-26c9-4d35-ae93-544567f3cb82
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
@@ -65,34 +65,34 @@ Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 {
-  "ID": "31121190-504d-4ba6-9e0e-479d352bb4c8",
-  "addressLine1": "addressLine1-31121190",
-  "addressLine2": "addressLine2-31121190",
-  "city": "city-31121190",
-  "stateProvince": "stateProvince-31121190",
-  "postalCode": "postalCode-31121190"
+  "ID": "25928986-9572-49fc-adaa-bfde6821bb50",
+  "addressLine1": "addressLine1-25928986",
+  "addressLine2": "addressLine2-25928986",
+  "city": "city-25928986",
+  "stateProvince": "stateProvince-25928986",
+  "postalCode": "postalCode-25928986"
 }
 
 
 ### Addresses
 # @name Addresses_PATCH
-PATCH {{server}}/odata/v4/restaurant/Addresses/31121190-504d-4ba6-9e0e-479d352bb4c8
+PATCH {{server}}/odata/v4/restaurant/Addresses/25928986-9572-49fc-adaa-bfde6821bb50
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 {
-  "ID": "31121190-504d-4ba6-9e0e-479d352bb4c8",
-  "addressLine1": "addressLine1-31121190",
-  "addressLine2": "addressLine2-31121190",
-  "city": "city-31121190",
-  "stateProvince": "stateProvince-31121190",
-  "postalCode": "postalCode-31121190"
+  "ID": "25928986-9572-49fc-adaa-bfde6821bb50",
+  "addressLine1": "addressLine1-25928986",
+  "addressLine2": "addressLine2-25928986",
+  "city": "city-25928986",
+  "stateProvince": "stateProvince-25928986",
+  "postalCode": "postalCode-25928986"
 }
 
 
 ### Addresses
 # @name Addresses_DELETE
-DELETE {{server}}/odata/v4/restaurant/Addresses/31121190-504d-4ba6-9e0e-479d352bb4c8
+DELETE {{server}}/odata/v4/restaurant/Addresses/25928986-9572-49fc-adaa-bfde6821bb50
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
@@ -110,87 +110,87 @@ Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 {
-  "ID": "55225ae6-6f03-4cb3-8339-0197cbc1031f",
-  "name": "name-55225",
-  "description": "description-55225",
-  "cuisine": "cuisine-55225",
+  "ID": "29549611-057e-44b9-bfc1-5ed4f8e4f3b4",
+  "name": "name-2954961",
+  "description": "description-2954961",
+  "cuisine": "cuisine-2954961",
   "Address": {
-    "ID": "31121190-504d-4ba6-9e0e-479d352bb4c8"
+    "ID": "25928986-9572-49fc-adaa-bfde6821bb50"
   },
   "menu": [
     {
-      "ID": "9488941a-e4bb-4bbb-b3ae-f8c4e097e315",
-      "name": "name-9488941",
-      "description": "description-9488941",
-      "price": 21433137.2,
-      "image": "image-9488941",
+      "ID": "68938195-b4ce-48ee-b410-196beb3f3b41",
+      "name": "name-6893819",
+      "description": "description-6893819",
+      "price": 55796824.68,
+      "image": "image-6893819",
       "itmes": [
         {
-          "ID": "14665919-9436-4922-8d6a-29ced7572834",
-          "name": "name-14665919",
-          "description": "description-14665919",
-          "price": 27448226.85,
+          "ID": "21983203-6cfa-495b-beaa-6d2edccc6107",
+          "name": "name-21983203",
+          "description": "description-21983203",
+          "price": 91267386.05,
           "isAvailable": false,
-          "imageUrl": "imageUrl-14665919",
-          "createdAt": "2005-11-25T00:00:00.000Z",
-          "createdBy": "createdBy.8qcan@example.org",
-          "modifiedAt": "2020-09-13T00:00:00.000Z",
-          "modifiedBy": "modifiedBy.8qcan@example.net"
+          "imageUrl": "imageUrl-21983203",
+          "createdAt": "2022-09-16T00:00:00.000Z",
+          "createdBy": "createdBy.d36cj@example.org",
+          "modifiedAt": "2016-10-22T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.d36cj@example.com"
         },
         {
-          "ID": "14665920-f760-4518-b329-64df15f67648",
-          "name": "name-14665920",
-          "description": "description-14665920",
-          "price": 80559009.83,
+          "ID": "21983204-3d66-4685-81ff-aa36ba97aa75",
+          "name": "name-21983204",
+          "description": "description-21983204",
+          "price": 66779005.21,
           "isAvailable": true,
-          "imageUrl": "imageUrl-14665920",
-          "createdAt": "2008-04-22T00:00:00.000Z",
-          "createdBy": "createdBy.8qcao@example.net",
-          "modifiedAt": "2018-01-25T00:00:00.000Z",
-          "modifiedBy": "modifiedBy.8qcao@example.com"
+          "imageUrl": "imageUrl-21983204",
+          "createdAt": "2012-11-09T00:00:00.000Z",
+          "createdBy": "createdBy.d36ck@example.org",
+          "modifiedAt": "2003-02-08T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.d36ck@example.net"
         }
       ],
-      "createdAt": "2008-03-17T00:00:00.000Z",
-      "createdBy": "createdBy.5ndpp@example.net",
-      "modifiedAt": "2010-04-26T00:00:00.000Z",
-      "modifiedBy": "modifiedBy.5ndpp@example.com"
+      "createdAt": "2015-10-27T00:00:00.000Z",
+      "createdBy": "createdBy.43raz@example.net",
+      "modifiedAt": "2010-01-23T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.43raz@example.com"
     },
     {
-      "ID": "9488942c-5cf0-42c1-9790-57e5fa4319f8",
-      "name": "name-9488942",
-      "description": "description-9488942",
-      "price": 13723214.6,
-      "image": "image-9488942",
+      "ID": "6893820a-7630-4606-9b9b-1fd2e09e82b0",
+      "name": "name-6893820",
+      "description": "description-6893820",
+      "price": 69798161.68,
+      "image": "image-6893820",
       "itmes": [
         {
-          "ID": "27422696-b39a-4a74-b3e0-632de0de4e16",
-          "name": "name-27422696",
-          "description": "description-27422696",
-          "price": 57282408.57,
-          "isAvailable": true,
-          "imageUrl": "imageUrl-27422696",
-          "createdAt": "2007-04-14T00:00:00.000Z",
-          "createdBy": "createdBy.gbrhk@example.org",
-          "modifiedAt": "2009-08-06T00:00:00.000Z",
-          "modifiedBy": "modifiedBy.gbrhk@example.org"
+          "ID": "19715447-5129-4382-ad32-5c28a3a92253",
+          "name": "name-19715447",
+          "description": "description-19715447",
+          "price": 71950928.96,
+          "isAvailable": false,
+          "imageUrl": "imageUrl-19715447",
+          "createdAt": "2015-12-09T00:00:00.000Z",
+          "createdBy": "createdBy.bqkjb@example.org",
+          "modifiedAt": "2014-07-13T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.bqkjb@example.org"
         },
         {
-          "ID": "27422697-700d-4e4a-af6a-603229667a00",
-          "name": "name-27422697",
-          "description": "description-27422697",
-          "price": 56927573.68,
-          "isAvailable": false,
-          "imageUrl": "imageUrl-27422697",
-          "createdAt": "2009-12-18T00:00:00.000Z",
-          "createdBy": "createdBy.gbrhl@example.org",
-          "modifiedAt": "2013-07-27T00:00:00.000Z",
-          "modifiedBy": "modifiedBy.gbrhl@example.org"
+          "ID": "19715448-3d1e-42be-8281-7ae9b63b1fc9",
+          "name": "name-19715448",
+          "description": "description-19715448",
+          "price": 41170239.04,
+          "isAvailable": true,
+          "imageUrl": "imageUrl-19715448",
+          "createdAt": "2012-02-21T00:00:00.000Z",
+          "createdBy": "createdBy.bqkjc@example.org",
+          "modifiedAt": "2002-07-13T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.bqkjc@example.com"
         }
       ],
-      "createdAt": "2016-12-28T00:00:00.000Z",
-      "createdBy": "createdBy.5ndpq@example.net",
-      "modifiedAt": "2003-06-28T00:00:00.000Z",
-      "modifiedBy": "modifiedBy.5ndpq@example.net"
+      "createdAt": "2012-06-25T00:00:00.000Z",
+      "createdBy": "createdBy.43rb0@example.org",
+      "modifiedAt": "2000-09-17T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.43rb0@example.com"
     }
   ]
 }
@@ -198,92 +198,92 @@ Authorization: Basic {{username}}:{{password}}
 
 ### Restaurants
 # @name Restaurants_PATCH
-PATCH {{server}}/odata/v4/restaurant/Restaurants/55225ae6-6f03-4cb3-8339-0197cbc1031f
+PATCH {{server}}/odata/v4/restaurant/Restaurants/29549611-057e-44b9-bfc1-5ed4f8e4f3b4
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 {
-  "ID": "55225ae6-6f03-4cb3-8339-0197cbc1031f",
-  "name": "name-55225",
-  "description": "description-55225",
-  "cuisine": "cuisine-55225",
+  "ID": "29549611-057e-44b9-bfc1-5ed4f8e4f3b4",
+  "name": "name-2954961",
+  "description": "description-2954961",
+  "cuisine": "cuisine-2954961",
   "Address": {
-    "ID": "31121190-504d-4ba6-9e0e-479d352bb4c8"
+    "ID": "25928986-9572-49fc-adaa-bfde6821bb50"
   },
   "menu": [
     {
-      "ID": "9488941a-e4bb-4bbb-b3ae-f8c4e097e315",
-      "name": "name-9488941",
-      "description": "description-9488941",
-      "price": 21433137.2,
-      "image": "image-9488941",
+      "ID": "68938195-b4ce-48ee-b410-196beb3f3b41",
+      "name": "name-6893819",
+      "description": "description-6893819",
+      "price": 55796824.68,
+      "image": "image-6893819",
       "itmes": [
         {
-          "ID": "14665919-9436-4922-8d6a-29ced7572834",
-          "name": "name-14665919",
-          "description": "description-14665919",
-          "price": 27448226.85,
+          "ID": "21983203-6cfa-495b-beaa-6d2edccc6107",
+          "name": "name-21983203",
+          "description": "description-21983203",
+          "price": 91267386.05,
           "isAvailable": false,
-          "imageUrl": "imageUrl-14665919",
-          "createdAt": "2005-11-25T00:00:00.000Z",
-          "createdBy": "createdBy.8qcan@example.org",
-          "modifiedAt": "2020-09-13T00:00:00.000Z",
-          "modifiedBy": "modifiedBy.8qcan@example.net"
+          "imageUrl": "imageUrl-21983203",
+          "createdAt": "2022-09-16T00:00:00.000Z",
+          "createdBy": "createdBy.d36cj@example.org",
+          "modifiedAt": "2016-10-22T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.d36cj@example.com"
         },
         {
-          "ID": "14665920-f760-4518-b329-64df15f67648",
-          "name": "name-14665920",
-          "description": "description-14665920",
-          "price": 80559009.83,
+          "ID": "21983204-3d66-4685-81ff-aa36ba97aa75",
+          "name": "name-21983204",
+          "description": "description-21983204",
+          "price": 66779005.21,
           "isAvailable": true,
-          "imageUrl": "imageUrl-14665920",
-          "createdAt": "2008-04-22T00:00:00.000Z",
-          "createdBy": "createdBy.8qcao@example.net",
-          "modifiedAt": "2018-01-25T00:00:00.000Z",
-          "modifiedBy": "modifiedBy.8qcao@example.com"
+          "imageUrl": "imageUrl-21983204",
+          "createdAt": "2012-11-09T00:00:00.000Z",
+          "createdBy": "createdBy.d36ck@example.org",
+          "modifiedAt": "2003-02-08T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.d36ck@example.net"
         }
       ],
-      "createdAt": "2008-03-17T00:00:00.000Z",
-      "createdBy": "createdBy.5ndpp@example.net",
-      "modifiedAt": "2010-04-26T00:00:00.000Z",
-      "modifiedBy": "modifiedBy.5ndpp@example.com"
+      "createdAt": "2015-10-27T00:00:00.000Z",
+      "createdBy": "createdBy.43raz@example.net",
+      "modifiedAt": "2010-01-23T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.43raz@example.com"
     },
     {
-      "ID": "9488942c-5cf0-42c1-9790-57e5fa4319f8",
-      "name": "name-9488942",
-      "description": "description-9488942",
-      "price": 13723214.6,
-      "image": "image-9488942",
+      "ID": "6893820a-7630-4606-9b9b-1fd2e09e82b0",
+      "name": "name-6893820",
+      "description": "description-6893820",
+      "price": 69798161.68,
+      "image": "image-6893820",
       "itmes": [
         {
-          "ID": "27422696-b39a-4a74-b3e0-632de0de4e16",
-          "name": "name-27422696",
-          "description": "description-27422696",
-          "price": 57282408.57,
-          "isAvailable": true,
-          "imageUrl": "imageUrl-27422696",
-          "createdAt": "2007-04-14T00:00:00.000Z",
-          "createdBy": "createdBy.gbrhk@example.org",
-          "modifiedAt": "2009-08-06T00:00:00.000Z",
-          "modifiedBy": "modifiedBy.gbrhk@example.org"
+          "ID": "19715447-5129-4382-ad32-5c28a3a92253",
+          "name": "name-19715447",
+          "description": "description-19715447",
+          "price": 71950928.96,
+          "isAvailable": false,
+          "imageUrl": "imageUrl-19715447",
+          "createdAt": "2015-12-09T00:00:00.000Z",
+          "createdBy": "createdBy.bqkjb@example.org",
+          "modifiedAt": "2014-07-13T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.bqkjb@example.org"
         },
         {
-          "ID": "27422697-700d-4e4a-af6a-603229667a00",
-          "name": "name-27422697",
-          "description": "description-27422697",
-          "price": 56927573.68,
-          "isAvailable": false,
-          "imageUrl": "imageUrl-27422697",
-          "createdAt": "2009-12-18T00:00:00.000Z",
-          "createdBy": "createdBy.gbrhl@example.org",
-          "modifiedAt": "2013-07-27T00:00:00.000Z",
-          "modifiedBy": "modifiedBy.gbrhl@example.org"
+          "ID": "19715448-3d1e-42be-8281-7ae9b63b1fc9",
+          "name": "name-19715448",
+          "description": "description-19715448",
+          "price": 41170239.04,
+          "isAvailable": true,
+          "imageUrl": "imageUrl-19715448",
+          "createdAt": "2012-02-21T00:00:00.000Z",
+          "createdBy": "createdBy.bqkjc@example.org",
+          "modifiedAt": "2002-07-13T00:00:00.000Z",
+          "modifiedBy": "modifiedBy.bqkjc@example.com"
         }
       ],
-      "createdAt": "2016-12-28T00:00:00.000Z",
-      "createdBy": "createdBy.5ndpq@example.net",
-      "modifiedAt": "2003-06-28T00:00:00.000Z",
-      "modifiedBy": "modifiedBy.5ndpq@example.net"
+      "createdAt": "2012-06-25T00:00:00.000Z",
+      "createdBy": "createdBy.43rb0@example.org",
+      "modifiedAt": "2000-09-17T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.43rb0@example.com"
     }
   ]
 }
@@ -291,7 +291,7 @@ Authorization: Basic {{username}}:{{password}}
 
 ### Restaurants
 # @name Restaurants_DELETE
-DELETE {{server}}/odata/v4/restaurant/Restaurants/55225ae6-6f03-4cb3-8339-0197cbc1031f
+DELETE {{server}}/odata/v4/restaurant/Restaurants/29549611-057e-44b9-bfc1-5ed4f8e4f3b4
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
@@ -309,92 +309,92 @@ Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 {
-  "ID": "9488941a-e4bb-4bbb-b3ae-f8c4e097e315",
-  "name": "name-9488941",
-  "description": "description-9488941",
-  "price": 21433137.2,
-  "image": "image-9488941",
+  "ID": "68938195-b4ce-48ee-b410-196beb3f3b41",
+  "name": "name-6893819",
+  "description": "description-6893819",
+  "price": 55796824.68,
+  "image": "image-6893819",
   "itmes": [
     {
-      "ID": "14665919-9436-4922-8d6a-29ced7572834",
-      "name": "name-14665919",
-      "description": "description-14665919",
-      "price": 27448226.85,
+      "ID": "21983203-6cfa-495b-beaa-6d2edccc6107",
+      "name": "name-21983203",
+      "description": "description-21983203",
+      "price": 91267386.05,
       "isAvailable": false,
-      "imageUrl": "imageUrl-14665919",
-      "createdAt": "2005-11-25T00:00:00.000Z",
-      "createdBy": "createdBy.8qcan@example.org",
-      "modifiedAt": "2020-09-13T00:00:00.000Z",
-      "modifiedBy": "modifiedBy.8qcan@example.net"
+      "imageUrl": "imageUrl-21983203",
+      "createdAt": "2022-09-16T00:00:00.000Z",
+      "createdBy": "createdBy.d36cj@example.org",
+      "modifiedAt": "2016-10-22T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.d36cj@example.com"
     },
     {
-      "ID": "14665920-f760-4518-b329-64df15f67648",
-      "name": "name-14665920",
-      "description": "description-14665920",
-      "price": 80559009.83,
+      "ID": "21983204-3d66-4685-81ff-aa36ba97aa75",
+      "name": "name-21983204",
+      "description": "description-21983204",
+      "price": 66779005.21,
       "isAvailable": true,
-      "imageUrl": "imageUrl-14665920",
-      "createdAt": "2008-04-22T00:00:00.000Z",
-      "createdBy": "createdBy.8qcao@example.net",
-      "modifiedAt": "2018-01-25T00:00:00.000Z",
-      "modifiedBy": "modifiedBy.8qcao@example.com"
+      "imageUrl": "imageUrl-21983204",
+      "createdAt": "2012-11-09T00:00:00.000Z",
+      "createdBy": "createdBy.d36ck@example.org",
+      "modifiedAt": "2003-02-08T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.d36ck@example.net"
     }
   ],
-  "createdAt": "2008-03-17T00:00:00.000Z",
-  "createdBy": "createdBy.5ndpp@example.net",
-  "modifiedAt": "2010-04-26T00:00:00.000Z",
-  "modifiedBy": "modifiedBy.5ndpp@example.com"
+  "createdAt": "2015-10-27T00:00:00.000Z",
+  "createdBy": "createdBy.43raz@example.net",
+  "modifiedAt": "2010-01-23T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.43raz@example.com"
 }
 
 
 ### MenuItems
 # @name MenuItems_PATCH
-PATCH {{server}}/odata/v4/restaurant/MenuItems/9488941a-e4bb-4bbb-b3ae-f8c4e097e315
+PATCH {{server}}/odata/v4/restaurant/MenuItems/68938195-b4ce-48ee-b410-196beb3f3b41
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 {
-  "ID": "9488941a-e4bb-4bbb-b3ae-f8c4e097e315",
-  "name": "name-9488941",
-  "description": "description-9488941",
-  "price": 21433137.2,
-  "image": "image-9488941",
+  "ID": "68938195-b4ce-48ee-b410-196beb3f3b41",
+  "name": "name-6893819",
+  "description": "description-6893819",
+  "price": 55796824.68,
+  "image": "image-6893819",
   "itmes": [
     {
-      "ID": "14665919-9436-4922-8d6a-29ced7572834",
-      "name": "name-14665919",
-      "description": "description-14665919",
-      "price": 27448226.85,
+      "ID": "21983203-6cfa-495b-beaa-6d2edccc6107",
+      "name": "name-21983203",
+      "description": "description-21983203",
+      "price": 91267386.05,
       "isAvailable": false,
-      "imageUrl": "imageUrl-14665919",
-      "createdAt": "2005-11-25T00:00:00.000Z",
-      "createdBy": "createdBy.8qcan@example.org",
-      "modifiedAt": "2020-09-13T00:00:00.000Z",
-      "modifiedBy": "modifiedBy.8qcan@example.net"
+      "imageUrl": "imageUrl-21983203",
+      "createdAt": "2022-09-16T00:00:00.000Z",
+      "createdBy": "createdBy.d36cj@example.org",
+      "modifiedAt": "2016-10-22T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.d36cj@example.com"
     },
     {
-      "ID": "14665920-f760-4518-b329-64df15f67648",
-      "name": "name-14665920",
-      "description": "description-14665920",
-      "price": 80559009.83,
+      "ID": "21983204-3d66-4685-81ff-aa36ba97aa75",
+      "name": "name-21983204",
+      "description": "description-21983204",
+      "price": 66779005.21,
       "isAvailable": true,
-      "imageUrl": "imageUrl-14665920",
-      "createdAt": "2008-04-22T00:00:00.000Z",
-      "createdBy": "createdBy.8qcao@example.net",
-      "modifiedAt": "2018-01-25T00:00:00.000Z",
-      "modifiedBy": "modifiedBy.8qcao@example.com"
+      "imageUrl": "imageUrl-21983204",
+      "createdAt": "2012-11-09T00:00:00.000Z",
+      "createdBy": "createdBy.d36ck@example.org",
+      "modifiedAt": "2003-02-08T00:00:00.000Z",
+      "modifiedBy": "modifiedBy.d36ck@example.net"
     }
   ],
-  "createdAt": "2008-03-17T00:00:00.000Z",
-  "createdBy": "createdBy.5ndpp@example.net",
-  "modifiedAt": "2010-04-26T00:00:00.000Z",
-  "modifiedBy": "modifiedBy.5ndpp@example.com"
+  "createdAt": "2015-10-27T00:00:00.000Z",
+  "createdBy": "createdBy.43raz@example.net",
+  "modifiedAt": "2010-01-23T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.43raz@example.com"
 }
 
 
 ### MenuItems
 # @name MenuItems_DELETE
-DELETE {{server}}/odata/v4/restaurant/MenuItems/9488941a-e4bb-4bbb-b3ae-f8c4e097e315
+DELETE {{server}}/odata/v4/restaurant/MenuItems/68938195-b4ce-48ee-b410-196beb3f3b41
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
@@ -412,44 +412,111 @@ Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 {
-  "ID": "14665919-9436-4922-8d6a-29ced7572834",
-  "name": "name-14665919",
-  "description": "description-14665919",
-  "price": 27448226.85,
+  "ID": "21983203-6cfa-495b-beaa-6d2edccc6107",
+  "name": "name-21983203",
+  "description": "description-21983203",
+  "price": 91267386.05,
   "isAvailable": false,
-  "imageUrl": "imageUrl-14665919",
-  "createdAt": "2005-11-25T00:00:00.000Z",
-  "createdBy": "createdBy.8qcan@example.org",
-  "modifiedAt": "2020-09-13T00:00:00.000Z",
-  "modifiedBy": "modifiedBy.8qcan@example.net"
+  "imageUrl": "imageUrl-21983203",
+  "createdAt": "2022-09-16T00:00:00.000Z",
+  "createdBy": "createdBy.d36cj@example.org",
+  "modifiedAt": "2016-10-22T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.d36cj@example.com"
 }
 
 
 ### Food
 # @name Food_PATCH
-PATCH {{server}}/odata/v4/restaurant/Food/14665919-9436-4922-8d6a-29ced7572834
+PATCH {{server}}/odata/v4/restaurant/Food/21983203-6cfa-495b-beaa-6d2edccc6107
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 {
-  "ID": "14665919-9436-4922-8d6a-29ced7572834",
-  "name": "name-14665919",
-  "description": "description-14665919",
-  "price": 27448226.85,
+  "ID": "21983203-6cfa-495b-beaa-6d2edccc6107",
+  "name": "name-21983203",
+  "description": "description-21983203",
+  "price": 91267386.05,
   "isAvailable": false,
-  "imageUrl": "imageUrl-14665919",
-  "createdAt": "2005-11-25T00:00:00.000Z",
-  "createdBy": "createdBy.8qcan@example.org",
-  "modifiedAt": "2020-09-13T00:00:00.000Z",
-  "modifiedBy": "modifiedBy.8qcan@example.net"
+  "imageUrl": "imageUrl-21983203",
+  "createdAt": "2022-09-16T00:00:00.000Z",
+  "createdBy": "createdBy.d36cj@example.org",
+  "modifiedAt": "2016-10-22T00:00:00.000Z",
+  "modifiedBy": "modifiedBy.d36cj@example.com"
 }
 
 
 ### Food
 # @name Food_DELETE
-DELETE {{server}}/odata/v4/restaurant/Food/14665919-9436-4922-8d6a-29ced7572834
+DELETE {{server}}/odata/v4/restaurant/Food/21983203-6cfa-495b-beaa-6d2edccc6107
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
+
+
+### OtpValidation
+# @name OtpValidation_GET
+GET {{server}}/odata/v4/restaurant/OtpValidation
+Authorization: Basic {{username}}:{{password}}
+
+
+### OtpValidation
+# @name OtpValidation_POST
+POST {{server}}/odata/v4/restaurant/OtpValidation
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "email": "OtpValidation-28045117",
+  "otp": "5117",
+  "validUpTo": "2009-02-19T00:00:00.000Z",
+  "attempt": 13,
+  "isVerify": false
+}
+
+
+### OtpValidation
+# @name OtpValidation_PATCH
+PATCH {{server}}/odata/v4/restaurant/OtpValidation/OtpValidation-28045117
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "email": "OtpValidation-28045117",
+  "otp": "5117",
+  "validUpTo": "2009-02-19T00:00:00.000Z",
+  "attempt": 13,
+  "isVerify": false
+}
+
+
+### OtpValidation
+# @name OtpValidation_DELETE
+DELETE {{server}}/odata/v4/restaurant/OtpValidation/OtpValidation-28045117
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+
+### verifyEmail
+# @name verifyEmail_POST
+POST {{server}}/odata/v4/restaurant/verifyEmail
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "email": "suvm1sahoo@gmail.com"
+}
+
+
+### verifyOtp
+# @name verifyOtp_POST
+POST {{server}}/odata/v4/restaurant/verifyOtp
+Content-Type: application/json
+Authorization: Basic {{username}}:{{password}}
+
+{
+  "email": "suvm1sahoo@gmail.com",
+  "otp": "8678"
+}
+
 
 
 ### createUser

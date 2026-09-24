@@ -1,20 +1,19 @@
 import SapCfMailer from "sap-cf-mailer";
 import cds from '@sap/cds';
-import { email } from "zod";
 
 const { OtpValidation } = cds.entities("RestaurantService");
 
 function generateOtp(): `${number}${number}${number}${number}` {
-    const randomGenerator = "Math.floor(Math.random()*10)";
-    return `${eval(randomGenerator)}${eval(randomGenerator)}${eval(randomGenerator)}${eval(randomGenerator)}`;
+  const randomGenerator = "Math.floor(Math.random()*10)";
+  return `${eval(randomGenerator)}${eval(randomGenerator)}${eval(randomGenerator)}${eval(randomGenerator)}`;
 }
 
 async function sendMail(mail: string, otp: string) {
-    try {
+  try {
 
-        const transporter = new SapCfMailer("mail");
+    const transporter = new SapCfMailer("mail");
 
-        const otpHtml = `
+    const otpHtml = `
 <div style="background:#0f0e17;padding:48px 0;font-family:'Segoe UI',system-ui,sans-serif;">
   <table align="center" width="440" cellpadding="0" cellspacing="0" style="background:#1a1826;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(255,107,53,0.15);">
 
@@ -57,38 +56,39 @@ async function sendMail(mail: string, otp: string) {
 </div>
 `;
 
-        const result = await transporter.sendMail({
-            to: "subhamsahoo.js@gmail.com",
-            cc: "",
-            subject: "Your MidNight Crave Verification Code",
-            html: otpHtml
-        });
+    const result = await transporter.sendMail({
+      to: mail,
+      cc: "",
+      subject: "Your MidNight Crave Verification Code",
+      html: otpHtml
+    });
 
-        return `Email sent successfully`;
+    return `Email sent successfully`;
 
-    } catch (error) {
+  } catch (error) {
+    console.error('Error sending email:', error);
+    if (error instanceof Error) {
+      throw new Error(`Error sending email: ${error.message}`);
 
-        console.error('Error sending email:', error);
-
-
-        if (error instanceof Error) {
-            return `Error sending email: ${error.message}`;
-
-        } else {
-            console.log("unknown error", error);
-        }
-
+    } else {
+      console.log("unknown error", error);
     }
+
+  }
 }
 
-async function verifyMail(mail: string) {
+async function sendOtp(mail: string) {
+  try {
     type numricString = `${number}${number}${number}${number}`
     const otp: numricString = generateOtp();
     // const otp: numricString = "1234";
 
-    await INSERT.into(OtpValidation).entries({ email: mail, otp: otp, validUpTo: new Date(Date.now() + 5 * 60 * 1000), attempt: 4 });
+    await UPSERT.into(OtpValidation).entries({ email: mail, otp: otp, validUpTo: new Date(Date.now() + 1 * 60 * 1000) });
 
     await sendMail(mail, otp);
+  } catch (error) {
+    return error instanceof Error ? error.message : "Otp send Failed";
+  }
 }
 
-export default verifyMail;
+export default sendOtp;

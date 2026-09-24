@@ -1,6 +1,6 @@
 import cds from '@sap/cds';
 
-import verifyMail from "./mail";
+import sendOtp from "./mail";
 
 import { CreateUser } from "./zod";
 
@@ -8,7 +8,78 @@ import { CreateUser } from "./zod";
 export class RestaurantService extends cds.ApplicationService {
   init() {
 
-    const { Users, Addresses } = this.entities;
+    const { Users, Addresses, OtpValidation } = this.entities;
+
+    this.on("verifyEmail", async (req) => {
+      try {
+        await sendOtp(req.data.email);
+        return { success: true, message: 'OTP sent' };
+      } catch (error) {
+        const message = error instanceof Error ? error.message : 'Failed to send OTP';
+        return { success: false, message };
+      }
+    })
+
+    this.on("verifyOtp", async (req) => {
+      const email = req.data.email;
+      const userOTP = req.data.otp;
+
+      const record = await SELECT.one.from(OtpValidation).where({ email });
+
+      if (!record) {
+        return {
+          message: "Email Not Found",
+          attempt: ``,
+          isValid: false
+        }
+      }
+
+      const isExpired = new Date(record.validUpTo) < new Date(Date.now());
+
+      if (isExpired) {
+        await DELETE.from(OtpValidation).where({ email });
+
+        return {
+          message: "Otp is Expired Click Send Again",
+          attempt: ``,
+          isValid: false
+        }
+      }
+
+      const sentOTP = record?.otp;
+
+      if (userOTP === sentOTP) {
+
+        await UPDATE(OtpValidation, email).set({ isVerify: true });
+
+        return {
+          message: "Valid OTP",
+          isValid: true
+        }
+      } else {
+
+        await UPDATE(OtpValidation, email).with({ attempt: { '-=': 1 } });
+
+        const attemptLeft = record.attempt - 1;
+
+        if (!attemptLeft) {
+
+          await DELETE.from(OtpValidation).where({ email, attempt: 0 });
+
+          return {
+            message: "4 attempt Completed Please Request for new OTP",
+            isValid: false
+          }
+        }
+
+        return {
+          message: "InValid OTP",
+          attempt: `${attemptLeft} attempt Left`,
+          isValid: false
+        }
+      }
+
+    })
 
     this.on("createUser", async (req) => {
       const typeCheckRes = CreateUser.safeParse(req.data);
@@ -20,10 +91,6 @@ export class RestaurantService extends cds.ApplicationService {
       const res = typeCheckRes.data;
 
       const { basicDetails, addressDetails } = res;
-
-      // firrt need to valid email before create the User
-
-      await verifyMail(basicDetails.email);
 
       await INSERT.into(Addresses).entries(addressDetails);
 
