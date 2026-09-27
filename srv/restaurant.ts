@@ -21,8 +21,8 @@ export class RestaurantService extends cds.ApplicationService {
     })
 
     this.on("verifyOtp", async (req) => {
-      const email = req.data.email;
-      const userOTP = req.data.otp;
+
+      const { email, userOTP } = req.data;
 
       const record = await SELECT.one.from(OtpValidation).where({ email });
 

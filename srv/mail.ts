@@ -3,9 +3,10 @@ import cds from '@sap/cds';
 
 const { OtpValidation } = cds.entities("RestaurantService");
 
-function generateOtp(): `${number}${number}${number}${number}` {
-  const randomGenerator = "Math.floor(Math.random()*10)";
-  return `${eval(randomGenerator)}${eval(randomGenerator)}${eval(randomGenerator)}${eval(randomGenerator)}`;
+function generateOtp(): string {
+  const crypto = require('crypto');
+
+  return String(crypto.randomInt(0, 10000)).padStart(4, '0');
 }
 
 async function sendMail(mail: string, otp: string) {
@@ -38,7 +39,7 @@ async function sendMail(mail: string, otp: string) {
           </div>
         </div>
 
-        <p style="color:#6e7086;font-size:12.5px;margin:0 0 4px;">Expires in <b style="color:#a7a9be;">10 minutes</b></p>
+        <p style="color:#6e7086;font-size:12.5px;margin:0 0 4px;">Expires in <b style="color:#a7a9be;">5 minutes</b></p>
         <p style="color:#3e3e4a;font-size:11.5px;margin:0;">Didn't request this? Ignore this email.</p>
       </td>
     </tr>
@@ -79,8 +80,8 @@ async function sendMail(mail: string, otp: string) {
 
 async function sendOtp(mail: string) {
   try {
-    type numricString = `${number}${number}${number}${number}`
-    const otp: numricString = generateOtp();
+    // type numricString = `${number}${number}${number}${number}`
+    const otp: string = generateOtp();
     // const otp: numricString = "1234";
 
     await UPSERT.into(OtpValidation).entries({ email: mail, otp: otp, validUpTo: new Date(Date.now() + 1 * 60 * 1000) });
