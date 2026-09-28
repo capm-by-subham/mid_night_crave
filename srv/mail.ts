@@ -1,7 +1,7 @@
 import SapCfMailer from "sap-cf-mailer";
 import cds from '@sap/cds';
 
-const { OtpValidation } = cds.entities("RestaurantService");
+const { OtpValidation,validMail } = cds.entities("db");
 
 function generateOtp(): string {
   const crypto = require('crypto');
@@ -72,7 +72,7 @@ async function sendMail(mail: string, otp: string) {
       throw new Error(`Error sending email: ${error.message}`);
 
     } else {
-      console.log("unknown error", error);
+      throw new Error("unknown error");
     }
 
   }
@@ -84,11 +84,11 @@ async function sendOtp(mail: string) {
     const otp: string = generateOtp();
     // const otp: numricString = "1234";
 
-    await UPSERT.into(OtpValidation).entries({ email: mail, otp: otp, validUpTo: new Date(Date.now() + 1 * 60 * 1000) });
+    await UPSERT.into(OtpValidation).entries({ email: mail, otp: otp, validUpTo: new Date(Date.now() + 5 * 60 * 1000) });
 
     await sendMail(mail, otp);
   } catch (error) {
-    return error instanceof Error ? error.message : "Otp send Failed";
+    throw new Error(error instanceof Error ? error.message : "Otp send Failed");
   }
 }
 

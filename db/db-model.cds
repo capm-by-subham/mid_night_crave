@@ -144,5 +144,9 @@ entity OtpValidation {
         otp       : String(4) not null;
         validUpTo : DateTime not null;
         attempt   : Integer default 4;
-        isVerify  : Boolean default false;
+}
+
+entity validMail {
+    key email    : String(100) not null;
+        isVerify : Boolean default false;
 }

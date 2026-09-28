@@ -48,8 +48,7 @@ service RestaurantService {
 
     entity Food          as projection on db.Food;
 
-
-    entity OtpValidation as projection on db.OtpValidation;
+    // entity OtpValidation as projection on db.OtpValidation;
 
     action verifyEmail(email: String)                                               returns {
         message : String(50);

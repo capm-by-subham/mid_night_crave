@@ -8,7 +8,8 @@ import { CreateUser } from "./zod";
 export class RestaurantService extends cds.ApplicationService {
   init() {
 
-    const { Users, Addresses, OtpValidation } = this.entities;
+    const { Users, Addresses } = this.entities;
+    const { OtpValidation, validMail } = cds.entities("db");
 
     this.on("verifyEmail", async (req) => {
       try {
@@ -22,13 +23,13 @@ export class RestaurantService extends cds.ApplicationService {
 
     this.on("verifyOtp", async (req) => {
 
-      const { email, userOTP } = req.data;
+      const { email, otp: userOTP } = req.data;
 
       const record = await SELECT.one.from(OtpValidation).where({ email });
 
       if (!record) {
         return {
-          message: "Email Not Found",
+          message: "Invalid or expired OTP. Please request a new one.",
           attempt: ``,
           isValid: false
         }
@@ -50,19 +51,21 @@ export class RestaurantService extends cds.ApplicationService {
 
       if (userOTP === sentOTP) {
 
-        await UPDATE(OtpValidation, email).set({ isVerify: true });
+        await UPSERT.into(validMail).entries({ email, isVerify: true });
+        await DELETE.from(OtpValidation).where({ email });
 
         return {
           message: "Valid OTP",
           isValid: true
         }
       } else {
+        
 
         await UPDATE(OtpValidation, email).with({ attempt: { '-=': 1 } });
 
         const attemptLeft = record.attempt - 1;
 
-        if (!attemptLeft) {
+        if (attemptLeft === 0) {
 
           await DELETE.from(OtpValidation).where({ email, attempt: 0 });
 
