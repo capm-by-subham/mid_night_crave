@@ -1,7 +1,7 @@
 import SapCfMailer from "sap-cf-mailer";
 import cds from '@sap/cds';
 
-const { OtpValidation,validMail } = cds.entities("db");
+const { OtpValidation, validMail } = cds.entities("db");
 
 function generateOtp(): string {
   const crypto = require('crypto');

@@ -32,7 +32,13 @@
     },
     "requires": {
       "[production]": {
-        "db": "hana",
+        "db": {
+          "kind": "hana",
+          "pool": {
+            "acquireTimeoutMillis": 10000,
+            "max": 50
+          }
+        },
         "auth": "xsuaa"
       },
       "destinations": true

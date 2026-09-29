@@ -25,7 +25,7 @@ export class RestaurantService extends cds.ApplicationService {
 
       const { email, otp: userOTP } = req.data;
 
-      const record = await SELECT.one.from(OtpValidation).where({ email });
+      const record = await SELECT.one.from(OtpValidation).where({ email }).forUpdate({ wait: 5 });
 
       if (!record) {
         return {
@@ -59,7 +59,7 @@ export class RestaurantService extends cds.ApplicationService {
           isValid: true
         }
       } else {
-        
+
 
         await UPDATE(OtpValidation, email).with({ attempt: { '-=': 1 } });
 
