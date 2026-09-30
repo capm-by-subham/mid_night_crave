@@ -1,10 +1,13 @@
-import cds from '@sap/cds';
-
+import cds, { __DateTime } from '@sap/cds';
 import sendOtp from "./mail";
+const crypto = require('crypto');
+const LOGS = cds.log("restaurantsService");
+
 
 // import { CreateUser } from "./zod";
+type PayLoad = { email: string, ExpireAt: __DateTime };
 
-const LOGS = cds.log("restaurantsService");
+
 
 
 export class RestaurantService extends cds.ApplicationService {
@@ -18,7 +21,7 @@ export class RestaurantService extends cds.ApplicationService {
 
   async onVerifyEmail(req: cds.Request) {
     try {
-      const email = req.data.email;
+      const { email } = req.data;
       if (!this.isValidEmail(email)) {
         req.reject("Not a Valid Email");
       }
@@ -32,7 +35,7 @@ export class RestaurantService extends cds.ApplicationService {
 
   async onVerifyOTP(req: cds.Request) {
     try {
-      const { OtpValidation, validMail } = cds.entities("db");
+      const { OtpValidation } = cds.entities("db");
 
       const { email, otp: userOTP } = req.data;
 
@@ -49,7 +52,7 @@ export class RestaurantService extends cds.ApplicationService {
 
       const sentOTP = record?.otp;
       if (userOTP === sentOTP) {
-        await UPSERT.into(validMail).entries({ email, isVerify: true });
+        // TO-DO
         await DELETE.from(OtpValidation).where({ email });
         return { message: "Valid OTP", isValid: true };
       } else {
@@ -73,6 +76,23 @@ export class RestaurantService extends cds.ApplicationService {
   isValidEmail(email: string): Boolean {
     const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return EMAIL_REGEX.test(email.trim());
+  }
+
+
+  getSeasonKey(payLoad: PayLoad) {
+    const mySecrete = "hello cap";
+    const base64PayLoad = Buffer.from(JSON.stringify(payLoad)).toString('base64');
+    return crypto.createHmac('sha256', mySecrete).update(base64PayLoad).digest('hex');
+  }
+
+  getPayLoad(SeasonKey: string, payLoad: PayLoad) {
+    const mySecrete = "hello cap";
+    const base64PayLoad = Buffer.from(JSON.stringify(payLoad)).toString('base64');
+    const expected = crypto.createHmac('sha256', mySecrete).update(base64PayLoad).digest('hex');
+    return crypto.timingSafeEqual(
+      Buffer.from(expected),
+      Buffer.from(SeasonKey)
+    );
   }
 }
 
