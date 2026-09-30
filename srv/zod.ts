@@ -26,9 +26,10 @@ type AddressDetails = z.infer<typeof AddressDetails>;
 
 const CreateUser = z.object({
   basicDetails: BasicDetails,
-  addressDetails: AddressDetails
+  addressDetails: AddressDetails,
+  SeasonKey: z.string()
 });
 
 type CreateUser = z.infer<typeof CreateUser>;
 
-export {CreateUser};
+export { CreateUser };

@@ -21,7 +21,7 @@ type AddressDetailsT {
 };
 
 service RestaurantService {
-    entity Users         as
+    entity Users       as
         projection on db.User {
             ID,
             name,
@@ -31,9 +31,9 @@ service RestaurantService {
             Address
         }
 
-    entity Addresses     as projection on db.Addresses;
+    entity Addresses   as projection on db.Addresses;
 
-    entity Restaurants   as
+    entity Restaurants as
         projection on db.Restaurant {
             ID,
             name,
@@ -44,22 +44,25 @@ service RestaurantService {
         }
 
 
-    entity MenuItems     as projection on db.MenuItems;
+    entity MenuItems   as projection on db.MenuItems;
 
-    entity Food          as projection on db.Food;
+    entity Food        as projection on db.Food;
 
     // entity OtpValidation as projection on db.OtpValidation;
 
-    action verifyEmail(email: String)                                               returns {
+    action verifyEmail(email: String)                                                                       returns {
         message : String(50);
         success : Boolean;
     };
 
-    action verifyOtp(email: String, otp: String(4))                                 returns {
-        message : String(50);
-        attempt : String(50);
-        isValid : Boolean;
+    action verifyOtp(email: String, otp: String(4))                                                         returns {
+        message   : String(50);
+        attempt   : String(50);
+        SeasonKey : String(1000);
     };
 
-    action createUser(basicDetails: BasicDetailsT, addressDetails: AddressDetailsT) returns db.User:ID;
+    action createUser(basicDetails: BasicDetailsT, addressDetails: AddressDetailsT, SeasonKey: String(1000)) returns {
+        message : String(50);
+        ID      : db.User:ID
+    };
 }

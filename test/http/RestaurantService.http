@@ -452,49 +452,6 @@ Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 
-### OtpValidation
-# @name OtpValidation_GET
-GET {{server}}/odata/v4/restaurant/OtpValidation
-Authorization: Basic {{username}}:{{password}}
-
-
-### OtpValidation
-# @name OtpValidation_POST
-POST {{server}}/odata/v4/restaurant/OtpValidation
-Content-Type: application/json
-Authorization: Basic {{username}}:{{password}}
-
-{
-  "email": "OtpValidation-28045117",
-  "otp": "5117",
-  "validUpTo": "2009-02-19T00:00:00.000Z",
-  "attempt": 13,
-  "isVerify": false
-}
-
-
-### OtpValidation
-# @name OtpValidation_PATCH
-PATCH {{server}}/odata/v4/restaurant/OtpValidation/OtpValidation-28045117
-Content-Type: application/json
-Authorization: Basic {{username}}:{{password}}
-
-{
-  "email": "OtpValidation-28045117",
-  "otp": "5117",
-  "validUpTo": "2009-02-19T00:00:00.000Z",
-  "attempt": 13,
-  "isVerify": false
-}
-
-
-### OtpValidation
-# @name OtpValidation_DELETE
-DELETE {{server}}/odata/v4/restaurant/OtpValidation/OtpValidation-28045117
-Content-Type: application/json
-Authorization: Basic {{username}}:{{password}}
-
-
 ### verifyEmail
 # @name verifyEmail_POST
 POST {{server}}/odata/v4/restaurant/verifyEmail
@@ -507,6 +464,7 @@ Authorization: Basic {{username}}:{{password}}
 
 
 ### verifyOtp
+# returns { message, attempt, SeasonKey }
 # @name verifyOtp_POST
 POST {{server}}/odata/v4/restaurant/verifyOtp
 Content-Type: application/json
@@ -514,21 +472,25 @@ Authorization: Basic {{username}}:{{password}}
 
 {
   "email": "suvm1sahoo@gmail.com",
-  "otp": "3121"
+  "otp": "9280"
 }
+
+# @seasonKey = {{verifyOtp_POST.response.body.SeasonKey}}
 
 
 
 ### createUser
+# returns { message, ID }
 # @name createUser_POST
 POST {{server}}/odata/v4/restaurant/createUser
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 
 {
+  "SeasonKey":"{{verifyOtp_POST.response.body.$.SeasonKey}}",
   "basicDetails": {
     "name": "Subham",
-    "email": "subhamsahoo.js@gmail.com",
+    "email": "suvm1sahoo@gmail.com",
     "number": "9348514583",
     "type": "R"
   },
