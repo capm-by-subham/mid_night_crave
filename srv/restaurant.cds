@@ -35,12 +35,11 @@ service RestaurantService {
 
     entity Restaurants as
         projection on db.Restaurant {
-            ID,
-            name,
-            description,
-            cuisine,
-            Address,
-            menu
+            *,
+            status @readonly
+        }
+        excluding {
+            owner
         }
 
 

@@ -36,18 +36,31 @@ entity Addresses : cuid {
     addressLine2  : String(150);
     city          : String(100) not null;
     stateProvince : String(100);
+
     postalCode    : String(20);
+    restaurant    : Association to Restaurant;
     user          : Association to User;
 }
 
 entity Restaurant : cuid, managed {
-    name        : String;
-    description : String;
-    rating      : Decimal(2, 1);
-    cuisine     : String;
-    Address     : Association to Addresses;
-    menu        : Composition of many MenuItems
-                      on menu.restaurant = $self;
+    name              : String(250);
+    description       : String(1000);
+    rating            : Decimal(2, 1);
+    cuisine           : String(400); // we may create another entity for that
+    owner             : Association to User;
+    status            : String enum {
+        A = 'Approved';
+        P = 'Pending';
+        S = 'Suspended'
+    } default 'Pending';
+    isOpen            : Boolean default false;
+    isAvailable       : Boolean default false;
+    openTime          : DateTime;
+    closeTime         : DateTime;
+    restaurantAddress : Composition of one Addresses
+                            on restaurantAddress.restaurant = $self;
+    menu              : Composition of many MenuItems
+                            on menu.restaurant = $self;
 }
 
 entity MenuItems : cuid, managed {
