@@ -11,21 +11,21 @@ type BasicDetails = {
   type: "C" | "R" | "D";
 };
 
-type AddressDetails = {
-  addressLine1: string;
-  addressLine2: string;
-  city: string;
-  stateProvince: string;
-  postalCode: string;
-};
+// type AddressDetails = {
+//   addressLine1: string;
+//   addressLine2: string;
+//   city: string;
+//   stateProvince: string;
+//   postalCode: string;
+// };
 
 type Tone = "error" | "success" | "info";
 type Step = "form" | "otp";
 
-interface AddressBoxProps {
-  addressDetails: AddressDetails;
-  setAddressDetails: React.Dispatch<React.SetStateAction<AddressDetails>>;
-}
+// interface AddressBoxProps {
+//   addressDetails: AddressDetails;
+//   setAddressDetails: React.Dispatch<React.SetStateAction<AddressDetails>>;
+// }
 
 type MessageToastProps = {
   errMsg: string | null;
@@ -83,16 +83,16 @@ function RegisterPage() {
     type: "C",
   });
 
-  const [addressDetails, setAddressDetails] = useState<AddressDetails>({
-    addressLine1: "Address1",
-    addressLine2: "Address2",
-    city: "Hyderbad",
-    stateProvince: "Telegana",
-    postalCode: "Odisha",
-  });
+  // const [addressDetails, setAddressDetails] = useState<AddressDetails>({
+  //   addressLine1: "Address1",
+  //   addressLine2: "Address2",
+  //   city: "Hyderbad",
+  //   stateProvince: "Telegana",
+  //   postalCode: "Odisha",
+  // });
 
   // derived from type — no separate state needed
-  const showAddress = basicDetails.type !== "D";
+  // const showAddress = basicDetails.type !== "D";
 
   const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(basicDetails.email);
   const isAllFill = Boolean(
@@ -104,7 +104,7 @@ function RegisterPage() {
     const response = await fetch("/restaurant/verifyEmail", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: basicDetails.email }),
+      body: JSON.stringify({ email: basicDetails.email, role: basicDetails.type }),
     });
     const data = await response.json();
     return { ok: Boolean(data.success), message: data.message };
@@ -168,7 +168,6 @@ function RegisterPage() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             basicDetails,
-            addressDetails: showAddress ? addressDetails : null, // no address for delivery boy
             SeasonKey,
           }),
         });
@@ -186,7 +185,7 @@ function RegisterPage() {
         setOtpMsg(e instanceof Error ? e.message : "Something went wrong");
       }
     },
-    [basicDetails, addressDetails, showAddress, navigate],
+    [basicDetails, navigate],
   );
 
   // ── OTP view ──
@@ -286,13 +285,6 @@ function RegisterPage() {
           </div>
         </section>
 
-        {showAddress && (
-          <AddressBox
-            addressDetails={addressDetails}
-            setAddressDetails={setAddressDetails}
-          />
-        )}
-
         <button
           type="submit"
           className="rg-submit"
@@ -305,90 +297,90 @@ function RegisterPage() {
   );
 }
 
-function AddressBox({ addressDetails, setAddressDetails }: AddressBoxProps) {
-  return (
-    <section className="rg-section">
-      <h3 className="rg-section-title">Address</h3>
+// function AddressBox({ addressDetails, setAddressDetails }: AddressBoxProps) {
+//   return (
+//     <section className="rg-section">
+//       <h3 className="rg-section-title">Address</h3>
 
-      <div className="rg-field">
-        <label className="rg-label">Address Line 1</label>
-        <input
-          className="rg-input"
-          placeholder="Address Line 1"
-          value={addressDetails.addressLine1}
-          onInput={(e) =>
-            setAddressDetails((prev) => ({
-              ...prev,
-              addressLine1: (e.target as HTMLInputElement).value,
-            }))
-          }
-        />
-      </div>
+//       <div className="rg-field">
+//         <label className="rg-label">Address Line 1</label>
+//         <input
+//           className="rg-input"
+//           placeholder="Address Line 1"
+//           value={addressDetails.addressLine1}
+//           onInput={(e) =>
+//             setAddressDetails((prev) => ({
+//               ...prev,
+//               addressLine1: (e.target as HTMLInputElement).value,
+//             }))
+//           }
+//         />
+//       </div>
 
-      <div className="rg-field">
-        <label className="rg-label">Address Line 2</label>
-        <input
-          className="rg-input"
-          placeholder="Address Line 2"
-          value={addressDetails.addressLine2}
-          onInput={(e) =>
-            setAddressDetails((prev) => ({
-              ...prev,
-              addressLine2: (e.target as HTMLInputElement).value,
-            }))
-          }
-        />
-      </div>
+//       <div className="rg-field">
+//         <label className="rg-label">Address Line 2</label>
+//         <input
+//           className="rg-input"
+//           placeholder="Address Line 2"
+//           value={addressDetails.addressLine2}
+//           onInput={(e) =>
+//             setAddressDetails((prev) => ({
+//               ...prev,
+//               addressLine2: (e.target as HTMLInputElement).value,
+//             }))
+//           }
+//         />
+//       </div>
 
-      <div className="rg-field-row">
-        <div className="rg-field">
-          <label className="rg-label">City</label>
-          <input
-            className="rg-input"
-            placeholder="Enter City"
-            value={addressDetails.city}
-            onInput={(e) =>
-              setAddressDetails((prev) => ({
-                ...prev,
-                city: (e.target as HTMLInputElement).value,
-              }))
-            }
-          />
-        </div>
+//       <div className="rg-field-row">
+//         <div className="rg-field">
+//           <label className="rg-label">City</label>
+//           <input
+//             className="rg-input"
+//             placeholder="Enter City"
+//             value={addressDetails.city}
+//             onInput={(e) =>
+//               setAddressDetails((prev) => ({
+//                 ...prev,
+//                 city: (e.target as HTMLInputElement).value,
+//               }))
+//             }
+//           />
+//         </div>
 
-        <div className="rg-field">
-          <label className="rg-label">State</label>
-          <input
-            className="rg-input"
-            placeholder="Enter State"
-            value={addressDetails.stateProvince}
-            onInput={(e) =>
-              setAddressDetails((prev) => ({
-                ...prev,
-                stateProvince: (e.target as HTMLInputElement).value,
-              }))
-            }
-          />
-        </div>
+//         <div className="rg-field">
+//           <label className="rg-label">State</label>
+//           <input
+//             className="rg-input"
+//             placeholder="Enter State"
+//             value={addressDetails.stateProvince}
+//             onInput={(e) =>
+//               setAddressDetails((prev) => ({
+//                 ...prev,
+//                 stateProvince: (e.target as HTMLInputElement).value,
+//               }))
+//             }
+//           />
+//         </div>
 
-        <div className="rg-field rg-field--pin">
-          <label className="rg-label">PIN</label>
-          <input
-            className="rg-input"
-            placeholder="Pin Code"
-            value={addressDetails.postalCode}
-            onInput={(e) =>
-              setAddressDetails((prev) => ({
-                ...prev,
-                postalCode: (e.target as HTMLInputElement).value,
-              }))
-            }
-          />
-        </div>
-      </div>
-    </section>
-  );
-}
+//         <div className="rg-field rg-field--pin">
+//           <label className="rg-label">PIN</label>
+//           <input
+//             className="rg-input"
+//             placeholder="Pin Code"
+//             value={addressDetails.postalCode}
+//             onInput={(e) =>
+//               setAddressDetails((prev) => ({
+//                 ...prev,
+//                 postalCode: (e.target as HTMLInputElement).value,
+//               }))
+//             }
+//           />
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 function MessageToast({ errMsg, onClose }: MessageToastProps) {
   if (!errMsg) return null;

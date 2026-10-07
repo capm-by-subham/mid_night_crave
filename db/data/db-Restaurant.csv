@@ -1,5 +1,0 @@
-ID,name,description,rating,cuisine,Address_ID,createdAt,createdBy,modifiedAt,modifiedBy
-a2000001-0000-4000-8000-000000000001,Punjabi Tadka,Authentic North Indian dhaba-style food,4.6,North Indian,a0000010-0000-4000-8000-000000000010,2026-05-10T09:00:00Z,system,2026-05-10T09:00:00Z,system
-a2000002-0000-4000-8000-000000000002,Dakshin Delight,Traditional South Indian tiffin and meals,4.8,South Indian,a0000011-0000-4000-8000-000000000011,2026-05-11T09:00:00Z,system,2026-05-11T09:00:00Z,system
-a2000003-0000-4000-8000-000000000003,Bombay Street Kitchen,Mumbai street food and chaats,4.5,Street Food,a0000012-0000-4000-8000-000000000012,2026-05-12T09:00:00Z,system,2026-05-12T09:00:00Z,system
-a2000004-0000-4000-8000-000000000004,Biryani Bros,Hyderabadi dum biryani specialists,4.9,Hyderabadi,a0000013-0000-4000-8000-000000000013,2026-05-13T09:00:00Z,system,2026-05-13T09:00:00Z,system

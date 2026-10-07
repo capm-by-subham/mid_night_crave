@@ -6,8 +6,7 @@ const BasicDetails = z.object({
   name: z.string().min(1),
   email: z.email(),
   number: z.string().regex(/^\d{10}$/, "number must be 10 digits"),
-  type: z.enum(["C", "R", "D"]),
-  Address_ID: z.uuid().optional()
+  type: z.enum(["C", "R", "D"])
 });
 
 type BasicDetails = z.infer<typeof BasicDetails>;
@@ -26,7 +25,6 @@ type AddressDetails = z.infer<typeof AddressDetails>;
 
 const CreateUser = z.object({
   basicDetails: BasicDetails,
-  addressDetails: AddressDetails,
   SeasonKey: z.string()
 });
 

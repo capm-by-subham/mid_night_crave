@@ -19,8 +19,8 @@ export class RestaurantService extends cds.ApplicationService {
 
   async onCreateUser(req: cds.Request) {
     try {
-      const { basicDetails, addressDetails, SeasonKey }: CreateUser = req.data;
-      const { User, Addresses } = cds.entities("db");
+      const { basicDetails, SeasonKey }: CreateUser = req.data;
+      const { User, Role } = cds.entities("db");
       const [hash, expiry] = SeasonKey.split(".");
 
       if (!hash || !expiry) return req.reject(400, "Invalid SeasonKey");
@@ -33,10 +33,19 @@ export class RestaurantService extends cds.ApplicationService {
       const isValidEmail = this.isValidPayLoad(hash, payLoad);
       if (!isValidEmail) return req.reject(401, "Invalid Season");
 
-      await INSERT.into(Addresses).entries(addressDetails);
-      basicDetails.Address_ID = addressDetails.ID;
-      const id = await INSERT.into(User).entries(basicDetails);
-      return { message: "Insert Success", ID: basicDetails.ID }
+
+      let existUserID = (await SELECT.one.from(User).columns(["ID", "email"]).where({ email: basicDetails.email }))?.ID;
+      if (!existUserID) {
+        const user = { ...basicDetails, role: [{ type: basicDetails.type }] };
+        await INSERT.into(User).entries(user);
+        existUserID = user.ID;
+      } else {// for same user with Mutiple Role like a driver can be an custmer;
+        let existUserRole = await SELECT.one.from(Role).where({ "type": basicDetails.type, "user_ID": existUserID });
+        if (existUserRole) return { message: "User Exist", ID: existUserID };
+        else await INSERT.into(Role).entries({ "type": basicDetails.type, "user_ID": existUserID });
+      }
+
+      return { message: "Insert Success", ID: existUserID };
     } catch (error) {
       LOGS.error("Error in onCreateUser", error);
       return { message: "Failed to Create User", ID: "" };
@@ -46,10 +55,18 @@ export class RestaurantService extends cds.ApplicationService {
 
   async onVerifyEmail(req: cds.Request) {
     try {
-      const { email } = req.data;
+      const { email, role } = req.data;
+      const { User, Role } = cds.entities("db");
       if (!this.isValidEmail(email)) {
         req.reject("Not a Valid Email");
       }
+
+      let existUserID = (await SELECT.one.from(User).columns(["ID", "email"]).where({ email: email }))?.ID;
+      if (existUserID) {
+        let existUserRole = await SELECT.one.from(Role).where({ "type": role, "user_ID": existUserID });
+        if (existUserRole) return { success: false, message: 'User Exist For This Mail Pls Login' };
+      }
+
       await sendOtp(email);
       return { success: true, message: 'OTP sent' };
     } catch (error) {

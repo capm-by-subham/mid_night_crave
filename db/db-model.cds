@@ -5,17 +5,29 @@ using {
     managed,
 } from '@sap/cds/common';
 
-
+@assert.unique: {oneEmail: [email]}
 entity User : cuid, managed {
-    name    : String;
-    email   : String;
+    name    : String(150);
+    email   : String(250);
     number  : String(10);
-    type    : String enum {
+    role    : Composition of many Role
+                  on role.user = $self;
+    // One User Can Can have Mutiple Role like a Driver Can be Customer and Order.
+    address : Composition of many Addresses
+                  on address.user = $self;
+}
+
+@assert.unique: {RolePerUserID: [
+    type,
+    user
+]}
+entity Role : cuid {
+    type : String enum {
         C = 'Customer';
         R = 'Retsurent Owner';
         D = 'Delivery Person';
     };
-    Address : Association to Addresses;
+    user : Association to User;
 }
 
 
@@ -25,6 +37,7 @@ entity Addresses : cuid {
     city          : String(100) not null;
     stateProvince : String(100);
     postalCode    : String(20);
+    user          : Association to User;
 }
 
 entity Restaurant : cuid, managed {

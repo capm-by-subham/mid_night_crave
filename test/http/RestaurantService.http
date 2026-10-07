@@ -47,7 +47,7 @@ Authorization: Basic {{username}}:{{password}}
 
 ### Users
 # @name Users_DELETE
-DELETE {{server}}/odata/v4/restaurant/Users/30578040-26c9-4d35-ae93-544567f3cb82
+DELETE {{server}}/odata/v4/restaurant/Users/c5b470ef-3840-4453-8ea3-c2d1e1d22481
 Content-Type: application/json
 Authorization: Basic {{username}}:{{password}}
 

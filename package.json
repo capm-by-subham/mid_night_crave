@@ -2,6 +2,7 @@
   "name": "mid_night_crave",
   "version": "1.0.0",
   "dependencies": {
+    "@cap-js/cds-test": "^1.0.2",
     "@cap-js/hana": "^2",
     "@sap-cloud-sdk/http-client": "^4.7.0",
     "@sap/cds": "^9",
@@ -14,7 +15,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@cap-js/cds-typer": ">=0.1",
+    "@cap-js/cds-typer": "^0.41.1",
     "@cap-js/cds-types": "^0.16.0",
     "@cap-js/sqlite": "^2.4",
     "@sap/cds-dk": "^9",

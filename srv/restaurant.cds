@@ -27,8 +27,8 @@ service RestaurantService {
             name,
             email,
             number,
-            type,
-            Address
+            role.type,
+            address
         }
 
     entity Addresses   as projection on db.Addresses;
@@ -50,18 +50,18 @@ service RestaurantService {
 
     // entity OtpValidation as projection on db.OtpValidation;
 
-    action verifyEmail(email: String)                                                                       returns {
+    action verifyEmail(email: String, role: String(1))                      returns {
         message : String(50);
         success : Boolean;
     };
 
-    action verifyOtp(email: String, otp: String(4))                                                         returns {
+    action verifyOtp(email: String, otp: String(4))                         returns {
         message   : String(50);
         attempt   : String(50);
         SeasonKey : String(1000);
     };
 
-    action createUser(basicDetails: BasicDetailsT, addressDetails: AddressDetailsT, SeasonKey: String(1000)) returns {
+    action createUser(basicDetails: BasicDetailsT, SeasonKey: String(1000)) returns {
         message : String(50);
         ID      : db.User:ID
     };
